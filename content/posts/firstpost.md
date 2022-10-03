@@ -12,7 +12,8 @@ readingTime = false
 hideComments = false
 +++
 
-<br>If only I wasn’t in this class</br>
+
+<span style="color:brown">If only I wasn’t in this class</span>
 I’d be out on the streets making cash\
 I’d go on trips above and beyond\
 With the ones I love, staying out in the sun\
