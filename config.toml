@@ -8,7 +8,7 @@ theme = 'terminal'
   contentTypeName = "posts"
 
   # ["orange", "blue", "red", "green", "pink"]
-  themeColor = "orange"
+  themeColor = "pink"
 
   # if you set this to 0, only submenu trigger will be visible
   showMenuItems = 2
@@ -64,7 +64,7 @@ theme = 'terminal'
     languageName = "English"
     title = "abds' blog "
     subtitle = "musings of the simple minded"
-    owner = ""
+    owner = "abundance"
     keywords = ""
     copyright = ""
     menuMore = "See more stuff"
@@ -73,7 +73,7 @@ theme = 'terminal'
     newerPosts = "Newer posts"
     olderPosts = "Older posts"
     missingContentMessage = "nothing's here lol :)"
-    missingBackButtonLabel = "Back to home page"
+    missingBackButtonLabel = "Back to the awesome home page"
 
     [languages.en.params.logo]
       logoText = "Abd"
