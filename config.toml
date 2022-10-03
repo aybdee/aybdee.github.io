@@ -1,3 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://abundance-io.github.io/abd'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'abds musings'
+theme = 'terminal'
