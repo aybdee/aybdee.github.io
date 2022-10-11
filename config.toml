@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://abundance-io.github.io/abd/'
 languageCode = 'en-us'
 title = 'abds musings'
 theme = 'terminal'
