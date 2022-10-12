@@ -82,9 +82,14 @@ theme = 'terminal'
     [languages.en.menu]
       [[languages.en.menu.main]]
         identifier = "about"
-        name = "About"
+        name = "About me "
         url = "/about"
       [[languages.en.menu.main]]
-        identifier = "showcase"
-        name = "Showcase"
+        identifier = "projects"
+        name = "projects"
         url = "/showcase"
+
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "posts"
+        url = "/posts"
