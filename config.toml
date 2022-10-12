@@ -93,3 +93,8 @@ theme = 'terminal'
         identifier = "posts"
         name = "posts"
         url = "/posts"
+
+      [[languages.en.menu.main]]
+        identifier = "musings"
+        name = "musings"
+        url = "/musings"
