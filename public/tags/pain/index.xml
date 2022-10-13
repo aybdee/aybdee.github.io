@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>:)</title>
-    <link>https://abundance-io.github.io/</link>
-    <description>Recent content on :)</description>
+    <title>pain on :)</title>
+    <link>https://abundance-io.github.io/tags/pain/</link>
+    <description>Recent content in pain on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/pain/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dr Cow</title>
       <link>https://abundance-io.github.io/musings/drcow/</link>
@@ -22,15 +22,6 @@ With my least favorite teacher in the world dr cow
 Here seconds pass by like they were years
 And the distinct murmuring aches my ears
 Maybe if I think about a life</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://abundance-io.github.io/posts/featuresarecool/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://abundance-io.github.io/posts/featuresarecool/</guid>
-      <description></description>
     </item>
     
   </channel>

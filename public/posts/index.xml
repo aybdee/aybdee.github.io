@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on abds&#39; blog </title>
+    <title>Posts on :)</title>
     <link>https://abundance-io.github.io/posts/</link>
-    <description>Recent content in Posts on abds&#39; blog </description>
+    <description>Recent content in Posts on :)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 03 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://abundance-io.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Dear Dr Cow</title>
-      <link>https://abundance-io.github.io/posts/firstpost/</link>
-      <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
+      <title></title>
+      <link>https://abundance-io.github.io/posts/featuresarecool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://abundance-io.github.io/posts/firstpost/</guid>
-      <description>If only I wasn’t in this classI’d be out on the streets making cash
-I’d go on trips above and beyond
-With the ones I love, staying out in the sun
-But sadly I’m stuck in this room right now
-With my least favorite teacher in the world dr cow
-Here seconds pass by like they were years
-And the distinct murmuring aches my ears
-Maybe if I think about a life</description>
+      <guid>https://abundance-io.github.io/posts/featuresarecool/</guid>
+      <description></description>
     </item>
     
   </channel>
