@@ -83,7 +83,7 @@ theme = 'terminal'
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
-        url = "/about"
+        url = "/base/about"
       [[languages.en.menu.main]]
         identifier = "projects"
         name = "Projects"

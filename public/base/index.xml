@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bases on :)</title>
+    <link>https://abundance-io.github.io/base/</link>
+    <description>Recent content in bases on :)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://abundance-io.github.io/base/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://abundance-io.github.io/base/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abundance-io.github.io/base/about/</guid>
+      <description>Hey There
+Maybe i&amp;rsquo;ll add more stuff later</description>
+    </item>
+    
+  </channel>
+</rss>
