@@ -1,11 +1,11 @@
 +++
-title = "Dear Dr Cow"
+title = "Dr Cow"
 date = "2022-10-03T12:46:12+01:00"
 author = ""
-authorTwitter = "" #do not include @
+authorTwitter = "abundance" #do not include @
 cover = ""
-tags = ["", ""]
-keywords = ["", ""]
+tags = ["randomstuff", "poems","pain"]
+keywords = ["pain", ""]
 description = ""
 showFullContent = false
 readingTime = false
@@ -13,7 +13,7 @@ hideComments = false
 +++
 
 
-<span style="color:brown">If only I wasn’t in this class</span>
+If only I wasn’t in this class\
 I’d be out on the streets making cash\
 I’d go on trips above and beyond\
 With the ones I love, staying out in the sun\
