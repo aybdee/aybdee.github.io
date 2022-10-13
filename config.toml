@@ -62,7 +62,7 @@ theme = 'terminal'
 [languages]
   [languages.en]
     languageName = "English"
-    title = "abds' blog "
+    title = ":)"
     subtitle = "musings of the simple minded"
     owner = "abundance"
     keywords = ""
@@ -82,19 +82,19 @@ theme = 'terminal'
     [languages.en.menu]
       [[languages.en.menu.main]]
         identifier = "about"
-        name = "About me "
+        name = "About"
         url = "/about"
       [[languages.en.menu.main]]
         identifier = "projects"
-        name = "projects"
+        name = "Projects"
         url = "/showcase"
 
       [[languages.en.menu.main]]
         identifier = "posts"
-        name = "posts"
+        name = "Posts"
         url = "/posts"
 
       [[languages.en.menu.main]]
         identifier = "musings"
-        name = "musings"
+        name = "Musings"
         url = "/musings"
