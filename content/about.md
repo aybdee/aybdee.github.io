@@ -9,7 +9,7 @@ also like to solve complex problems \
 \
 \
 
-<h1>Stuff I Know</h1> \
+#Stuff I Know
 Rust -> been learning this for a while, I try implementing some fairly complex projects every once in a while \
 you should check them out 
 
@@ -22,7 +22,7 @@ notably there's TCP/IP(just network stuff in general), git internals and operati
 \
 \
 \
-<h1>Other Stuff</h1>\
+#Other Stuff
 I read a lot of books on a lot of topics\
 mostly never finish them (curse my short attention span)\
 \
@@ -34,7 +34,8 @@ but I'll listen to anything really \
 interested in cooking(sort of suck at it for now :tears)\
 \
 \
-umm what else? \
+
+#umm what else? \
 favourite thing to do \
 read a book(fiction, alternative reality, mind fucking)\
 while listening to chill music and feeling happy with my life \
@@ -47,7 +48,7 @@ I love to spend money \
 send me money please :smile
 \
 \
-Find me \
+#Find me \
 on GitHub. please dont judge me \
 on Twitter. I never post :)\
 Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer 
