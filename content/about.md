@@ -55,4 +55,4 @@ send me money please 🙂
 * on [Twitter](https://twitter.com/aybdee). I never post :)  
 * Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer 
 then consider me responded)
-* Discord  #8360
+* Discord  aybdee#8360
