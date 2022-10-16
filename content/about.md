@@ -35,7 +35,7 @@ but I'll listen to anything really \
 
 
 
-# umm what else?# \
+# umm what else?#  
 * favourite thing to do \
 read a book(fiction, alternative reality, mind fucking)\
 while listening to chill music and feeling happy with my life \
@@ -43,13 +43,14 @@ not something i do very often tho\
 
 * A pretty close second is sharing fun moments with friends\
 (i've got really cool friends)\
-I love to spend money \
+  
+* I love to spend money \
 send me money please :smile\
 
 
-# Find me \
+# Find me  
 * on GitHub. please dont judge me  
 * on Twitter. I never post :)  
 * Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer 
 then consider me responded)  
-* Discord.\
+* Discord  
