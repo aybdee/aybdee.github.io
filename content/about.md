@@ -33,7 +33,7 @@ literally catalog my memories by song \
 I like mostly pop, 80's, and chill indie stuff \
 but I'll listen to anything really  
   
-* interested in cooking(sort of suck at it for now :tears)  
+* interested in cooking(sort of suck at it for now :tired_face:)  
 
 
 
