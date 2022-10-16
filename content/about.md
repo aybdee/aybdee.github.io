@@ -25,7 +25,7 @@ notably there's TCP/IP(just network stuff in general), git internals and operati
 
 # Other Stuff
 * I read a lot of books on a lot of topics\
-mostly never finish them (curse my short attention span)  
+mostly never finish them (curse my short attention span :sob:)  
   
 * I'm really into music \
 like reaaaaaally into music \
@@ -47,11 +47,11 @@ not something i do very often tho
 (i've got really cool friends)  
   
 * I love to spend money \
-send me money please :smile  
+send me money please :smile: 
 
 
 # Find me  
-* on [Github](https://github.com/abundance-io/) please dont judge me 
+* on [Github](https://github.com/abundance-io/) please dont judge me :see_no_evil:
 * on [Twitter](https://twitter.com/aybdee). I never post :)  
 * Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer 
 then consider me responded)
