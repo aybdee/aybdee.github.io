@@ -9,7 +9,7 @@ also like to solve complex problems \
 \
 \
 
-Stuff I Know \
+<h1>Stuff I Know</h1> \
 Rust -> been learning this for a while, I try implementing some fairly complex projects every once in a while \
 you should check them out 
 
