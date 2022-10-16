@@ -10,7 +10,7 @@ also like to solve complex problems
 
 
 # Stuff I know 
-* Rust. been learning this for a while,  I try implementing some fairly complex projects every once in a while \
+* Rust. been learning this for some time,  I try implementing some fairly complex projects every once in a while \
 you should check them out 
 
 * Machine Learning. specifically know a lot about deep learning (gotta prepare for our AI overlords)
