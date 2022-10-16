@@ -10,14 +10,14 @@ also like to solve complex problems
 
 
 # Stuff I know 
-Rust -> been learning this for a while,  I try implementing some fairly complex projects every once in a while \
+*Rust -> been learning this for a while,  I try implementing some fairly complex projects every once in a while \
 you should check them out 
 
-Machine Learning -> specifically know a lot about deep learning (gotta prepare for our AI overlords)
+*Machine Learning -> specifically know a lot about deep learning (gotta prepare for our AI overlords)
 work mostly with Pytorch(I'm pretty good with python)  
 
 
-Know lots of theory about random systems(mostly from ~~failed~~ developing projects) \
+*Know lots of theory about random systems(mostly from ~~failed~~ developing projects) \
 notably there's TCP/IP(just network stuff in general), git internals and operating systems\
 -- this isn't really an exhaustive list  
 
@@ -48,8 +48,8 @@ send me money please :smile\
 
 
 # Find me \
-* on GitHub. please dont judge me \
-* on Twitter. I never post :)\
+* on GitHub. please dont judge me  
+* on Twitter. I never post :)  
 * Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer 
-* then consider me responded)\
+then consider me responded)  
 * Discord.\
