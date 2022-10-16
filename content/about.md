@@ -3,11 +3,12 @@ title = "About me"
 +++
 
 I'm Abundance, I'm a random person and I do random stuff \
-I sort of like programming 
+//say something cool about being a programmer
 what I really love tho is knowing stuff and talking about it \
 also like to solve complex problems \
 \
 \
+{{< figure src="/img/hello.png" alt="Hello Friend" position="center" style="border-radius: 8px;" caption="Hello Friend!" captionPosition="right" captionStyle="color: red;" >}}
 Stuff I Know \
 Rust -> been learning this for a while, I try implementing some fairly complex projects every once in a while \
 you should check them out 
