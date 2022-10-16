@@ -51,7 +51,7 @@ send me money please 🙂
 
 
 # Find me  
-* on [Github](https://github.com/abundance-io/) please dont judge me :see_no_evil:
+* on [Github](https://github.com/abundance-io/) please dont judge me 🙈
 * on [Twitter](https://twitter.com/aybdee). I never post :)  
 * Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer 
 then consider me responded)
