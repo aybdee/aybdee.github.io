@@ -25,27 +25,29 @@ notably there's TCP/IP(just network stuff in general), git internals and operati
 
 # Other Stuff
 * I read a lot of books on a lot of topics\
-mostly never finish them (curse my short attention span)\
+mostly never finish them (curse my short attention span)  
+  
 * I'm really into music \
 like reaaaaaally into music \
 literally catalog my memories by song \
 I like mostly pop, 80's, and chill indie stuff \
-but I'll listen to anything really \
-* interested in cooking(sort of suck at it for now :tears)\
+but I'll listen to anything really  
+  
+* interested in cooking(sort of suck at it for now :tears)  
 
 
 
-# umm what else?#  
+# umm what else?  
 * favourite thing to do \
 read a book(fiction, alternative reality, mind fucking)\
 while listening to chill music and feeling happy with my life \
-not something i do very often tho\
-
+not something i do very often tho  
+  
 * A pretty close second is sharing fun moments with friends\
-(i've got really cool friends)\
+(i've got really cool friends)  
   
 * I love to spend money \
-send me money please :smile\
+send me money please :smile  
 
 
 # Find me  
