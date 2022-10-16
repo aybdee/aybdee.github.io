@@ -47,7 +47,7 @@ not something i do very often tho
 (i've got really cool friends)  
   
 * I love to spend money \
-send me money please :smile: 
+send me money please :simple_smile: 
 
 
 # Find me  
