@@ -10,6 +10,11 @@ also like to solve complex problems
 
 
 # Stuff I know 
+* Computers. This probably goes without saying, but i think computers are really cool,  
+I enjoy learning about how computers work under the hood  (
+you know, computer architectures and stuff)  
+I also try to build a few low level projects when i can InshAllah 
+
 * Rust. been learning this for some time,  I try implementing some fairly complex projects every once in a while \
 you should check them out 
 
