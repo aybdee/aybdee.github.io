@@ -1,11 +1,11 @@
 +++
-title= About Me
+title = "About me"
++++
 
 I'm Abundance, I'm a random person and I do random stuff \
 I sort of like programming 
 what I really love tho is knowing stuff and talking about it \
 also like to solve complex problems \
-
 \
 \
 Stuff I Know \
