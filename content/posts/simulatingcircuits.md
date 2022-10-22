@@ -14,10 +14,10 @@ hideComments = false
 
 
 
-you probably didn't know this 
+You probably didn't know this 
 but I'm a Computer Engineering major 
 
-for a while i've been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
+For a while i've been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
 but one cool thing i've noticed during classes is that an electrical circuits are a pretty fascinating system
 with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly  defined and for most of circuit analysis we usually focus on ideals so there's very little undefined behaviour  
 (DISCLAIMER - this doesn't mean by any chance that I enjoy the subject in anyway 
