@@ -46,7 +46,7 @@ I only found one random ass electronic stack exchange where the question was ask
 and all the guys that replied pointed out this thing called a SPICE netlist
 
 
-{{< figure src="img/splice.png" alt="Hello Friend" position="center" style="border-radius: 8px;" caption="Hello Friend!" captionPosition="right" captionStyle="color: red;" >}}
+{{< figure src="img/splice.png" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
 I checked the syntax and honestly i'll probably figure out a cure to cancer before i build anything to interpret that mess
 (a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that's not really what i'm going for)
