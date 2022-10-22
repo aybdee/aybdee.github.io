@@ -19,10 +19,11 @@ but I'm a Computer Engineering major
 
 for a while i've been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
 but one cool thing i've noticed during classes is that an electrical circuits are a pretty fascinating system
-with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly  defined and for most of circuit analysis we usually focus on ideals so there's very little undefined behaviour (DISCLAIMER - this doesn't mean by any chance that I enjoy the subject in anyway 
-I hope circuit theory burns :angry) 
+with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly  defined and for most of circuit analysis we usually focus on ideals so there's very little undefined behaviour  
+(DISCLAIMER - this doesn't mean by any chance that I enjoy the subject in anyway 
+(I hope circuit theory burns 😤)) 
 
-it does seems like something that could be really nice to write a simulation for 
+but it does seem like something that could be really nice to write a simulation for 
 
 now i'm a pretty lazy person 
 and when i have a cool idea like this i usually just check  for a decently good implementation of it  and see if i understand at least some of what they did 
@@ -43,18 +44,16 @@ but it was suprisingly shocking how little effort had been put towards solving t
 even after expert googling(trust me i tried)
 I only found one random ass electronic stack exchange where the question was asked 
 and all the guys that replied pointed out this thing called a SPICE netlist
-
-
+looks a little like this 
 {{< figure src="/img/splice.jpg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
 I checked the syntax and honestly i'll probably figure out a cure to cancer before i build anything to interpret that mess
-(a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that's not really what i'm going for)
+(a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that's not really what i'm going for  
+That and it looks like it was made in the 90's
+)
 
 anyways as you probably guessed by now 
 i was on my own 
 and it was time to put on my big brain hat and figure this out
 i got my sad indie playlist queued up (dont judge me)
 and got to work 
-
-
-
