@@ -47,7 +47,7 @@ and all the guys that replied pointed out this thing called a SPICE netlist
 looks a little like this 
 {{< figure src="/img/splice.jpg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
-I checked the syntax and honestly i'll probably figure out a cure to cancer before i build anything to interpret that mess
+I checked the syntax and honestly i'll probably figure out a cure to cancer before i build anything to interpret that mess  
 (a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that's not really what i'm going for  
 That and it looks like it was made in the 90's
 )
