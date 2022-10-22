@@ -47,7 +47,7 @@ looks a little like this
 
 I checked the syntax and honestly i'll probably figure out a cure to cancer before i build anything to interpret that mess  
 (a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that's not really what i'm going for  
-That and it looks like it was made in the 90's
+That and it looks like it was made in the 70's
 )
 
 anyways as you probably guessed by now 
