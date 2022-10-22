@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>:)</title><link>https://abundance-io.github.io/</link><description>Recent content on :)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>implementing vl6 spotify submission</title><link>https://abundance-io.github.io/projects/spotify_competition/</link><pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition/</guid><description/><content>&lt;!-- raw HTML omitted --></content></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>:)</title><link>https://abundance-io.github.io/</link><description>Recent content on :)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 22 Oct 2022 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Simulating Electric Circuits</title><link>https://abundance-io.github.io/posts/simulatingcircuits/</link><pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid><description>you probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
+for a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during classes is that electrical circuits are an intricately complex system with lots of simple rules that scale to form interesting patterns also (mainly because most of moving pieces involved are very clearly defined and for most of the analysis we usually focus on ideals -this doesn&amp;rsquo;t mean by any chance that I enjoy the subject in anyway I hope circuit theory burns :angry)</description><content>&lt;p>you probably didn&amp;rsquo;t know this
+but I&amp;rsquo;m a Computer Engineering major&lt;/p>
+&lt;p>for a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
+but one cool thing i&amp;rsquo;ve noticed during classes is that electrical circuits are an intricately complex system
+with lots of simple rules that scale to form interesting patterns also
+(mainly because most of moving pieces involved are very clearly defined and for most of the analysis we usually focus on ideals -this doesn&amp;rsquo;t mean by any chance that I enjoy the subject in anyway
+I hope circuit theory burns :angry)&lt;/p>
+&lt;p>but it does seems like something that could be really nice to write a simulation for&lt;/p>
+&lt;p>now i&amp;rsquo;m a pretty lazy person
+and when i have a cool idea like this i usually just check for a decently good implementation of it and see if i understand at least some of what they did
+or at the very least look for a specification and just implement that for sport or something&lt;/p>
+&lt;p>but I checked and a lot of the solutions out there are like high up professional grade stuff that my brain is too small to fathom
+and they dont really cover the use case i&amp;rsquo;m looking for (doing my homework :hehe)&lt;/p>
+&lt;p>so this time I figured I&amp;rsquo;d implement it myself(hopefully this isn&amp;rsquo;t a big waste of time)&lt;/p>
+&lt;p>The first thing I had to figure out was how to represent an electric ciruit with text and verify that the circuits are valid
+(and build a simple parser for whatever I come up with)
+at the start of this I had absolutely no intention of figuring that out on my own because it honestly seemed like a looooot of work
+(me no like work)
+but it was suprisingly shocking how little effort had been put towards solving that basic problem(text representation for circuits)
+even after expert googling(trust me i tried)
+I only found one random ass electronic stack exchange where the question was asked
+and all the guys that replied pointed out this thing called a SPICE netlist&lt;/p>
+&lt;figure class="center" >
+&lt;img src="img/splice.png" alt="Hello Friend" style="border-radius: 8px;" />
+&lt;figcaption class="right" style="color: red;" >Hello Friend!&lt;/figcaption>
+&lt;/figure>
+&lt;p>I checked the syntax and honestly i&amp;rsquo;ll probably figure out a cure to cancer before i build anything to interpret that mess
+(a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that&amp;rsquo;s not really what i&amp;rsquo;m going for)&lt;/p>
+&lt;p>anyways as you probably guessed by now
+i was on my own
+and it was time to put on my big brain hat and figure this out
+i got my sad indie playlist queued up (dont judge me)
+and got to work&lt;/p></content></item><item><title>recommendation systems</title><link>https://abundance-io.github.io/projects/spotify_competition/</link><pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition/</guid><description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
+it usually involves building intricately complex systems with different with different architectures that usually piece together to make something big and beautiful(for the most part)
+A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description><content>&lt;p>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production
+aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work&lt;br>
+it usually involves building intricately complex systems with different
+with different architectures that usually piece together to make something big and beautiful(for the most part)&lt;/p>
+&lt;p>A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture
+and forget to make the things that would actually make their models functional &amp;hellip;.&lt;/p>
+&lt;p>so in the light of getting better at solving problems end to end with machine learning
+I decided to implement an industry level(i&amp;rsquo;m probably being generous here) recommendation system&lt;/p>
+&lt;p>finding one to implement was pretty hard tbh&lt;/p>
+&lt;p>at first i thought i&amp;rsquo;d try netflix
+()&lt;/p></content></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
 I’d be out on the streets making cash
 I’d go on trips above and beyond
 With the ones I love, staying out in the sun
@@ -21,7 +66,36 @@ Or at least find an excuse to stay in my cell&lt;br>
 Is it just me or does this class drive you mad&lt;br>
 It’s probably just the stomach ache making me sad&lt;br>
 Well , I guess that’s all for now&lt;br>
-Final words for my least favorite teacher Dr Cow&lt;/p></content></item><item><title/><link>https://abundance-io.github.io/posts/featuresarecool/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/posts/featuresarecool/</guid><description/><content/></item><item><title>About me</title><link>https://abundance-io.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/about/</guid><description>I&amp;rsquo;m Abundance, I&amp;rsquo;m a random person and I do random stuff
+Final words for my least favorite teacher Dr Cow&lt;/p></content></item><item><title/><link>https://abundance-io.github.io/posts/featuresarecool/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/posts/featuresarecool/</guid><description/><content/></item><item><title/><link>https://abundance-io.github.io/projects/spotify_competition1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition1/</guid><description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing
+basically matrix factorization as used in regular collaborative filtering problems
+where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions
+I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;.</description><content>&lt;p>the initial model for candidate selection was WRMF(weight regularized matrix factorization)&lt;br>
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing&lt;/p>
+&lt;p>basically matrix factorization as used in regular collaborative filtering problems&lt;/p>
+&lt;p>where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions&lt;/p>
+&lt;p>I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;..)
+the creators of v16 link to a paper that more or less describes their specific approach to WRMF
+(Collaborative Filtering for Immediate Feedback Datasets)&lt;/p>
+&lt;p>it starts by distinguishing what immediate feedback recommendation problems are and the unique challenges that come as a result&lt;/p>
+&lt;p>(can&amp;rsquo;t really do the whole thing that would take forever)&lt;/p>
+&lt;p>for the most part,Implicit feedback problems occur when there aren&amp;rsquo;t any explicit(for lack of better word) metrics by which users rank the items that they interact with (usually in the form of a star rating or a ranking or something like that)
+instead what you have is just the data on how the user interacts with items , so stuff like how many times they bought something or clickedon a product)&lt;/p>
+&lt;p>generating recommendations for users from implicit feedback data is significantly different
+one because there isn&amp;rsquo;t any way of quantifying negative preference with the data
+(in a ranking system a 1 star rating means the user probably dislikes the product but there&amp;rsquo;s no such thing as negatively clicking a lick)&lt;/p>
+&lt;p>and then there&amp;rsquo;s also the fact that these kinds of data tend to be more noisy because not all interactions might come from the user
+(this is something that is largely mitigated with rating systems because most people ranking and starring products are doing it to show their personal preference in some way and would rarely bother ranking when someone else is involved)&lt;/p>
+&lt;p>lastly is just the increase in the overall complexity of the model for solving the problem
+with a simple numerical rating the problem is just to predict a specific score and
+the metrics for model success are pretty clear
+something like root mean square could probably suffice&lt;/p>
+&lt;p>with Implicit feedback it&amp;rsquo;s a little different '
+since we&amp;rsquo;re working with user interactions
+the model is predicting the likelihood of the user performing a certain interaction
+for all possible interactions&lt;/p>
+&lt;p>(that means we&amp;rsquo;ll have to consider things like availability of the item(whether the interaction can even happen in the first place),
+competition with other items, and repeat feedback(not quite sure what this is))&lt;/p></content></item><item><title>About me</title><link>https://abundance-io.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/about/</guid><description>I&amp;rsquo;m Abundance, I&amp;rsquo;m a random person and I do random stuff
 //say something cool about being a programmer
 what I really love tho is knowing stuff and talking about it
 also like to solve complex problems
