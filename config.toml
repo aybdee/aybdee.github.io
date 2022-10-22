@@ -17,10 +17,10 @@ theme = 'terminal'
   showLanguageSelector = false
 
   # set theme to full screen width
-  fullWidthTheme = true
+  fullWidthTheme = false
 
   # center theme with default width
-  centerTheme = false
+  centerTheme = true
 
   # if your resource directory contains an image called `cover.(jpg|png|webp)`,
   # then the file will be used as a cover automatically.
