@@ -26,7 +26,7 @@ looks a little like this
 &lt;img src="https://abundance-io.github.io/img/splice.jpg" style="border-radius: 8px;" />
 &lt;/figure>
 &lt;/p>
-&lt;p>I checked the syntax and honestly i&amp;rsquo;ll probably figure out a cure to cancer before i build anything to interpret that mess
+&lt;p>I checked the syntax and honestly i&amp;rsquo;ll probably figure out a cure to cancer before i build anything to interpret that mess&lt;br>
 (a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that&amp;rsquo;s not really what i&amp;rsquo;m going for&lt;br>
 That and it looks like it was made in the 90&amp;rsquo;s
 )&lt;/p>
