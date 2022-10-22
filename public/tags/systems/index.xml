@@ -8,12 +8,14 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 15 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/systems/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>implementing vl6 spotify submission</title>
+      <title>recommendation systems</title>
       <link>https://abundance-io.github.io/projects/spotify_competition/</link>
       <pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate>
       
       <guid>https://abundance-io.github.io/projects/spotify_competition/</guid>
-      <description></description>
+      <description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
+it usually involves building intricately complex systems with different with different architectures that usually piece together to make something big and beautiful(for the most part)
+A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description>
     </item>
     
   </channel>

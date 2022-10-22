@@ -6,14 +6,26 @@
     <description>Recent content on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Oct 2022 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>implementing vl6 spotify submission</title>
+      <title>Simulating Electric Circuits</title>
+      <link>https://abundance-io.github.io/posts/simulatingcircuits/</link>
+      <pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate>
+      
+      <guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid>
+      <description>you probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
+for a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during classes is that electrical circuits are an intricately complex system with lots of simple rules that scale to form interesting patterns also (mainly because most of moving pieces involved are very clearly defined and for most of the analysis we usually focus on ideals -this doesn&amp;rsquo;t mean by any chance that I enjoy the subject in anyway I hope circuit theory burns :angry)</description>
+    </item>
+    
+    <item>
+      <title>recommendation systems</title>
       <link>https://abundance-io.github.io/projects/spotify_competition/</link>
       <pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate>
       
       <guid>https://abundance-io.github.io/projects/spotify_competition/</guid>
-      <description></description>
+      <description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
+it usually involves building intricately complex systems with different with different architectures that usually piece together to make something big and beautiful(for the most part)
+A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description>
     </item>
     
     <item>
@@ -40,6 +52,19 @@ Maybe if I think about a life</description>
       
       <guid>https://abundance-io.github.io/posts/featuresarecool/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://abundance-io.github.io/projects/spotify_competition1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://abundance-io.github.io/projects/spotify_competition1/</guid>
+      <description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing
+basically matrix factorization as used in regular collaborative filtering problems
+where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions
+I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;.</description>
     </item>
     
     <item>

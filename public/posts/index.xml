@@ -5,7 +5,18 @@
     <link>https://abundance-io.github.io/posts/</link>
     <description>Recent content in Posts on :)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://abundance-io.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Oct 2022 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simulating Electric Circuits</title>
+      <link>https://abundance-io.github.io/posts/simulatingcircuits/</link>
+      <pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate>
+      
+      <guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid>
+      <description>you probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
+for a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during classes is that electrical circuits are an intricately complex system with lots of simple rules that scale to form interesting patterns also (mainly because most of moving pieces involved are very clearly defined and for most of the analysis we usually focus on ideals -this doesn&amp;rsquo;t mean by any chance that I enjoy the subject in anyway I hope circuit theory burns :angry)</description>
+    </item>
+    
     <item>
       <title></title>
       <link>https://abundance-io.github.io/posts/featuresarecool/</link>

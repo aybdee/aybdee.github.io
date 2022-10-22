@@ -22,7 +22,7 @@ notably there's TCP/IP(just network stuff in general), git internals and operati
 \
 \
 \
-#Other Stuff
+#Other Stuff#
 I read a lot of books on a lot of topics\
 mostly never finish them (curse my short attention span)\
 \
