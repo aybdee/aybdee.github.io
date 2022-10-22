@@ -18,12 +18,11 @@ you probably didn't know this
 but I'm a Computer Engineering major 
 
 for a while i've been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
-but one cool thing i've noticed during classes is that electrical circuits are an intricately complex system
-with lots of simple rules that scale to form interesting patterns also
-(mainly because most of moving pieces involved are very clearly  defined and for most of the analysis we usually focus on ideals -this doesn't mean by any chance that I enjoy the subject in anyway 
+but one cool thing i've noticed during classes is that electrical circuits are a pretty cool system
+with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly  defined and for most of circuit analysis we usually focus on ideals so there's very little undefined behaviour (DISCLAIMER - this doesn't mean by any chance that I enjoy the subject in anyway 
 I hope circuit theory burns :angry) 
 
-but it does seems like something that could be really nice to write a simulation for 
+it does seems like something that could be really nice to write a simulation for 
 
 now i'm a pretty lazy person 
 and when i have a cool idea like this i usually just check  for a decently good implementation of it  and see if i understand at least some of what they did 
@@ -46,7 +45,7 @@ I only found one random ass electronic stack exchange where the question was ask
 and all the guys that replied pointed out this thing called a SPICE netlist
 
 
-{{< figure src="/img/splice.png" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
+{{< figure src="/img/splice.jpg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
 I checked the syntax and honestly i'll probably figure out a cure to cancer before i build anything to interpret that mess
 (a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that's not really what i'm going for)
