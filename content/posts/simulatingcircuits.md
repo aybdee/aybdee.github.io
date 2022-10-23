@@ -61,7 +61,9 @@ It took a few minutes(and consulting a friend)
 to figure out a working model for the circuit 
 
 first for the syntax I went with the easier handsoff approach 
+<<<<<<< HEAD
 the circuit components are represented based on how they would be connected on an "infinite" (breadboard)["https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all"]
+=======
 
 {{< figure src="/img/breadboard.jpeg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
@@ -70,20 +72,20 @@ and its basically a grid so a 2 -coordinate index can be used to identify each h
 
 each line on the breadboard represents a node and it's  a way of connecting multiple components to the same point(ie every component on the same line are connected to the same point) 
 
-so circuit representation ....
+so circuit representation ......  
 a circuit is  a list of connections(sequence doesn't matter since this is descriptive) seperated by dots(meh why not)
 
 
-to declare a connection all you need to is state the label for  the component being connected, then it's terminal ie + or - and then the hole where it would be connected to on the breadboard grid
-also since we dont have that many components involved (at least for now ) each component can be represented with a single letter and the type can just add a count for reference each unique component in the label 
+to declare a connection all you need to is state the label for  the component being connected, then it's terminal ie + or - and then the hole where it would be connected to on the breadboard grid.  
+since we dont have that many components involved (at least for now ) each component can be represented with a single letter and we can just add a count to reference each unique component for the label 
+for now i think i'll go with P for power source and R for resistor
 so P1 means the first power source 
 
-for now i think i'll go with P for power source and R for resistor
 
 we end up with something like this 
 
 P1+01 -> (the positive terminal of the power source is plugged in at the 01 hole )
 
 
-lets try representing a complete circuit for sport 
+here's what a complete circuit would look like
 
