@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>pain on :)</title><link>https://abundance-io.github.io/tags/pain/</link><description>Recent content in pain on :)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 22 Oct 2022 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/pain/index.xml" rel="self" type="application/rss+xml"/><item><title>Simulating Electric Circuits</title><link>https://abundance-io.github.io/posts/simulatingcircuits/</link><pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid><description>You probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>circuits on :)</title><link>https://abundance-io.github.io/tags/circuits/</link><description>Recent content in circuits on :)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 22 Oct 2022 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/circuits/index.xml" rel="self" type="application/rss+xml"/><item><title>Simulating Electric Circuits</title><link>https://abundance-io.github.io/posts/simulatingcircuits/</link><pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid><description>You probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
 For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during class is that electrical circuits are a pretty fascinating system with lots of simple rules that scale to form interesting patterns. Also, most of the moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour</description><content>&lt;p>You probably didn&amp;rsquo;t know this
 but I&amp;rsquo;m a Computer Engineering major&lt;/p>
 &lt;p>For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
@@ -53,27 +53,4 @@ for now i think i&amp;rsquo;ll go with P for power source and R for resistor
 so P1 means the first power source&lt;/p>
 &lt;p>we end up with something like this&lt;/p>
 &lt;p>P1+01 -&amp;gt; (the positive terminal of the power source is plugged in at the 01 hole )&lt;/p>
-&lt;p>here&amp;rsquo;s what a complete circuit would look like&lt;/p></content></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
-I’d be out on the streets making cash
-I’d go on trips above and beyond
-With the ones I love, staying out in the sun
-But sadly I’m stuck in this room right now
-With my least favorite teacher in the world dr cow
-Here seconds pass by like they were years
-And the distinct murmuring aches my ears
-Maybe if I think about a life</description><content>&lt;p>If only I wasn’t in this class&lt;br>
-I’d be out on the streets making cash&lt;br>
-I’d go on trips above and beyond&lt;br>
-With the ones I love, staying out in the sun&lt;br>
-But sadly I’m stuck in this room right now&lt;br>
-With my least favorite teacher in the world dr cow&lt;br>
-Here seconds pass by like they were years&lt;br>
-And the distinct murmuring aches my ears&lt;br>
-Maybe if I think about a life&lt;br>
-Or decide to end mine with a very sharp knife&lt;br>
-I’d at last be saved from harrowing hell&lt;br>
-Or at least find an excuse to stay in my cell&lt;br>
-Is it just me or does this class drive you mad&lt;br>
-It’s probably just the stomach ache making me sad&lt;br>
-Well , I guess that’s all for now&lt;br>
-Final words for my least favorite teacher Dr Cow&lt;/p></content></item></channel></rss>
+&lt;p>here&amp;rsquo;s what a complete circuit would look like&lt;/p></content></item></channel></rss>
