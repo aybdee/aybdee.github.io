@@ -93,6 +93,6 @@ here's what a complete circuit would look like
 
 this would be represented as
 
-##P1+01.R1+02.R2+03.P1-31.R1-32.R2-33  
+## P1+01.R1+02.R2+03.P1-31.R1-32.R2-33  
 (remember this is purely descriptive so any order would still work)
 (note that i'm starting the count from the third row(in relation to the diagram) so row no 3 has index 0 and so on 
