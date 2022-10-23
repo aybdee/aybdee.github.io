@@ -28,8 +28,8 @@ but it does seem like something that could be really nice to write a simulation 
 now i'm a pretty lazy person 
 and when i have a cool idea like this i usually just check  for a decently good implementation of it  and see if i understand at least some of what they did 
 or at the very least look for a specification and just implement that for sport or something.  
-Anyways, I checked and a lot of the solutions out there are like high up professional grade stuff that my brain is too small to fathom 
-and they dont really cover the use case i'm looking for (doing my homework :hehe)
+I checked, and a lot of the solutions out there were like high up professional grade stuff that my brain was too small to fathom 
+and they didn't really cover the use case i'm looking for (doing my homework :hehe)
 so this time I figured I'd implement it myself(hopefully this isn't a big waste of time)
 
 
