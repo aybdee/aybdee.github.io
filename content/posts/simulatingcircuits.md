@@ -85,5 +85,5 @@ we end up with something like this
 P+01 -> (the positive terminal of the power source is plugged in at the 01 hole )
 
 
-lets try representing a complete circuit for sport 
+here's what a complete cricuit would look like
 
