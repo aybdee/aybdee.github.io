@@ -61,7 +61,7 @@ It took a few minutes(and consulting a friend)
 to figure out a working model for the circuit 
 
 first for the syntax I went with the easier handsoff approach 
-the circuit componenets are represented based on how they would be connected on an "infinite" (breadboard)["https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all"]
+the circuit componenets are represented based on how they would be connected on an "infinite" [breadboard]("https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all")
 
 {{< figure src="/img/breadboard.jpeg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
