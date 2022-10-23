@@ -4,7 +4,7 @@ date = "2022-10-22T10:57:12+01:00"
 author = "abundance"
 authorTwitter = "abundance" #do not include @
 cover = ""
-tags = []
+tags = ["circuits","pain"]
 keywords = []
 description = ""
 showFullContent = false
@@ -61,7 +61,7 @@ It took a few minutes(and consulting a friend)
 to figure out a working model for the circuit 
 
 first for the syntax I went with the easier handsoff approach 
-the circuit componenets are represented based on how they would be connected on an "infinite" (breadboard)["https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all"]
+the circuit components are represented based on how they would be connected on an "infinite" (breadboard)["https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all"]
 
 {{< figure src="/img/breadboard.jpeg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
 
@@ -82,7 +82,7 @@ for now i think i'll go with P for power source and R for resistor
 
 we end up with something like this 
 
-P+01 -> (the positive terminal of the power source is plugged in at the 01 hole )
+P1+01 -> (the positive terminal of the power source is plugged in at the 01 hole )
 
 
 lets try representing a complete circuit for sport 
