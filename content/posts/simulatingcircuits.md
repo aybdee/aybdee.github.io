@@ -18,8 +18,8 @@ You probably didn't know this
 but I'm a Computer Engineering major 
 
 For a while i've been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
-but one cool thing i've noticed during classes is that an electrical circuits are a pretty fascinating system
-with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly  defined and for most of circuit analysis we usually focus on ideals so there's very little undefined behaviour  
+but one cool thing i've noticed during class is that electrical circuits are a pretty fascinating system
+with lots of simple rules that scale to form interesting patterns. Also, most of the moving pieces involved are very clearly  defined and for most of circuit analysis we usually focus on ideals so there's very little undefined behaviour  
 (DISCLAIMER - this doesn't mean by any chance that I enjoy the subject in anyway 
 (I hope circuit theory burns 😠)) 
 
@@ -35,8 +35,8 @@ so this time I figured I'd implement it myself(hopefully this isn't a big waste 
 
 
 The first thing I had to figure out was how to represent an electric ciruit with text and verify that the circuits are valid 
-(and build a simple parser for whatever I come up with)
-at the start of this I had absolutely no intention of figuring that out on my own because it honestly seemed like a looooot of work 
+(and build a simple interpeter for whatever I came up with)
+tbh at the start of this I had absolutely no intention of figuring that out on my own because it honestly seemed like a looooot of work 
 (me no like work)
 but it was suprisingly shocking how little effort had been put towards solving that basic problem(text representation for circuits)
 even after expert googling(trust me i tried)
@@ -55,3 +55,35 @@ i was on my own
 and it was time to put on my big brain hat and figure this out
 i got my sad indie playlist queued up (dont judge me)
 and got to work 
+
+
+It took a few minutes(and consulting a friend)
+to figure out a working model for the circuit 
+
+first for the syntax I went with the easier handsoff approach 
+the circuit componenets are represented based on how they would be connected on an "infinite" (breadboard)["https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all"]
+
+{{< figure src="/img/breadboard.jpeg" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}
+
+the holes on the breadboard are points where the electrical components are to be connected to 
+and its basically a grid so a 2 -coordinate index can be used to identify each hole 
+
+each line on the breadboard represents a node and it's  a way of connecting multiple components to the same point(ie every component on the same line are connected to the same point) 
+
+so circuit representation ....
+a circuit is  a list of connections(sequence doesn't matter since this is descriptive) seperated by dots(meh why not)
+
+
+to declare a connection all you need to is state the label for  the component being connected, then it's terminal ie + or - and then the hole where it would be connected to on the breadboard grid
+also since we dont have that many components involved (at least for now ) each component can be represented with a single letter and the type can just add a count for reference each unique component in the label 
+so P1 means the first power source 
+
+for now i think i'll go with P for power source and R for resistor
+
+we end up with something like this 
+
+P+01 -> (the positive terminal of the power source is plugged in at the 01 hole )
+
+
+lets try representing a complete circuit for sport 
+
