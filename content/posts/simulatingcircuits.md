@@ -74,7 +74,7 @@ so circuit representation ......
 a circuit is  a list of connections(sequence doesn't matter since this is descriptive) seperated by dots(meh why not)
 
 
-to declare a connection all you need to is state the label for  the component being connected, then it's terminal ie + or - and then the hole where it would be connected to on the breadboard grid
+to declare a connection all you need to is state the label for  the component being connected, then it's terminal ie + or - and then the hole where it would be connected to on the breadboard grid.  
 since we dont have that many components involved (at least for now ) each component can be represented with a single letter and the type can just add a count for reference each unique component in the label 
 for now i think i'll go with P for power source and R for resistor
 so P1 means the first power source 
