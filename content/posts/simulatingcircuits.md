@@ -91,8 +91,7 @@ here's what a complete circuit would look like
 {{< figure src="/img/circuit_ex.png" alt="" position="center" style="border-radius: 8px;" caption="" captionPosition="right" captionStyle="color: red;" >}}  
 (conceptual diagam above, breadboard patch below)
 
-this would be represented as
-
-### P1+01.R1+02.R2+03.P1-31.R1-32.R2-33  
+this would be represented as  
+<p align="center"> ### P1+01.R1+02.R2+03.P1-31.R1-32.R2-33 </p>
 (remember this is purely descriptive so any order would still work)
 (note that i'm starting the count from the third row(in relation to the diagram) so row no 3 has index 0 and so on 
