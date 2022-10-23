@@ -48,7 +48,7 @@ and its basically a grid so a 2 -coordinate index can be used to identify each h
 &lt;p>so circuit representation &amp;hellip;&amp;hellip;&lt;br>
 a circuit is a list of connections(sequence doesn&amp;rsquo;t matter since this is descriptive) seperated by dots(meh why not)&lt;/p>
 &lt;p>to declare a connection all you need to is state the label for the component being connected, then it&amp;rsquo;s terminal ie + or - and then the hole where it would be connected to on the breadboard grid
-also, since we dont have that many components involved (at least for now ) each component can be represented with a single letter and the type can just add a count for reference each unique component in the label
+since we dont have that many components involved (at least for now ) each component can be represented with a single letter and the type can just add a count for reference each unique component in the label
 for now i think i&amp;rsquo;ll go with P for power source and R for resistor
 so P1 means the first power source&lt;/p>
 &lt;p>we end up with something like this&lt;/p>
