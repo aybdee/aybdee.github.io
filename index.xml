@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>:)</title><link>https://abundance-io.github.io/</link><description>Recent content on :)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 22 Oct 2022 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Simulating Electric Circuits</title><link>https://abundance-io.github.io/posts/simulatingcircuits/</link><pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid><description>You probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
-For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during classes is that an electrical circuits are a pretty fascinating system with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour</description><content>&lt;p>You probably didn&amp;rsquo;t know this
+For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during class is that electrical circuits are a pretty fascinating system with lots of simple rules that scale to form interesting patterns. Also, most of the moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour</description><content>&lt;p>You probably didn&amp;rsquo;t know this
 but I&amp;rsquo;m a Computer Engineering major&lt;/p>
 &lt;p>For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
-but one cool thing i&amp;rsquo;ve noticed during classes is that an electrical circuits are a pretty fascinating system
-with lots of simple rules that scale to form interesting patterns. Also, most of moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour&lt;br>
+but one cool thing i&amp;rsquo;ve noticed during class is that electrical circuits are a pretty fascinating system
+with lots of simple rules that scale to form interesting patterns. Also, most of the moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour&lt;br>
 (DISCLAIMER - this doesn&amp;rsquo;t mean by any chance that I enjoy the subject in anyway
 (I hope circuit theory burns 😠))&lt;/p>
 &lt;p>but it does seem like something that could be really nice to write a simulation for&lt;/p>
@@ -14,8 +14,8 @@ I checked, and a lot of the solutions out there were like high up professional g
 and they didn&amp;rsquo;t really cover the use case i&amp;rsquo;m looking for (doing my homework :hehe)
 so this time I figured I&amp;rsquo;d implement it myself(hopefully this isn&amp;rsquo;t a big waste of time)&lt;/p>
 &lt;p>The first thing I had to figure out was how to represent an electric ciruit with text and verify that the circuits are valid
-(and build a simple parser for whatever I come up with)
-at the start of this I had absolutely no intention of figuring that out on my own because it honestly seemed like a looooot of work
+(and build a simple interpeter for whatever I came up with)
+tbh at the start of this I had absolutely no intention of figuring that out on my own because it honestly seemed like a looooot of work
 (me no like work)
 but it was suprisingly shocking how little effort had been put towards solving that basic problem(text representation for circuits)
 even after expert googling(trust me i tried)
@@ -34,7 +34,26 @@ That and it looks like it was made in the 70&amp;rsquo;s
 i was on my own
 and it was time to put on my big brain hat and figure this out
 i got my sad indie playlist queued up (dont judge me)
-and got to work&lt;/p></content></item><item><title>recommendation systems</title><link>https://abundance-io.github.io/projects/spotify_competition/</link><pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition/</guid><description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
+and got to work&lt;/p>
+&lt;p>It took a few minutes(and consulting a friend)
+to figure out a working model for the circuit&lt;/p>
+&lt;p>first for the syntax I went with the easier handsoff approach
+the circuit componenets are represented based on how they would be connected on an &amp;ldquo;infinite&amp;rdquo; (breadboard)[&amp;ldquo;https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all&amp;rdquo;]&lt;/p>
+&lt;figure class="center" >
+&lt;img src="https://abundance-io.github.io/img/breadboard.jpeg" style="border-radius: 8px;" />
+&lt;/figure>
+&lt;p>the holes on the breadboard are points where the electrical components are to be connected to
+and its basically a grid so a 2 -coordinate index can be used to identify each hole&lt;/p>
+&lt;p>each line on the breadboard represents a node and it&amp;rsquo;s a way of connecting multiple components to the same point(ie every component on the same line are connected to the same point)&lt;/p>
+&lt;p>so circuit representation &amp;hellip;.
+a circuit is a list of connections(sequence doesn&amp;rsquo;t matter since this is descriptive) seperated by dots(meh why not)&lt;/p>
+&lt;p>to declare a connection all you need to is state the label for the component being connected, then it&amp;rsquo;s terminal ie + or - and then the hole where it would be connected to on the breadboard grid
+also since we dont have that many components involved (at least for now ) each component can be represented with a single letter and the type can just add a count for reference each unique component in the label
+so P1 means the first power source&lt;/p>
+&lt;p>for now i think i&amp;rsquo;ll go with P for power source and R for resistor&lt;/p>
+&lt;p>we end up with something like this&lt;/p>
+&lt;p>P+01 -&amp;gt; (the positive terminal of the power source is plugged in at the 01 hole )&lt;/p>
+&lt;p>lets try representing a complete circuit for sport&lt;/p></content></item><item><title>recommendation systems</title><link>https://abundance-io.github.io/projects/spotify_competition/</link><pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition/</guid><description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
 it usually involves building intricately complex systems with different with different architectures that usually piece together to make something big and beautiful(for the most part)
 A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description><content>&lt;p>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production
 aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work&lt;br>
