@@ -38,7 +38,7 @@ and got to work&lt;/p>
 &lt;p>It took a few minutes(and consulting a friend)
 to figure out a working model for the circuit&lt;/p>
 &lt;p>first for the syntax I went with the easier handsoff approach
-the circuit components are represented based on how they would be connected on an &amp;ldquo;infinite&amp;rdquo; (breadboard)[&amp;ldquo;https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all&amp;rdquo;]&lt;/p>
+the circuit components are represented based on how they would be connected on an &amp;ldquo;infinite&amp;rdquo; &lt;a href="%22https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all%22">breadboard&lt;/a>&lt;/p>
 &lt;figure class="center" >
 &lt;img src="https://abundance-io.github.io/img/breadboard.jpeg" style="border-radius: 8px;" />
 &lt;/figure>
