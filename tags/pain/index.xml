@@ -53,7 +53,16 @@ for now i think i&amp;rsquo;ll go with P for power source and R for resistor
 so P1 means the first power source&lt;/p>
 &lt;p>we end up with something like this&lt;/p>
 &lt;p>P1+01 -&amp;gt; (the positive terminal of the power source is plugged in at the 01 hole )&lt;/p>
-&lt;p>here&amp;rsquo;s what a complete circuit would look like&lt;/p></content></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
+&lt;p>here&amp;rsquo;s what a complete circuit would look like&lt;/p>
+&lt;p>
+&lt;figure class="center" >
+&lt;img src="https://abundance-io.github.io/img/circuit_ex.png" style="border-radius: 8px;" />
+&lt;/figure>
+&lt;br>
+(conceptual diagam above, breadboard patch below)&lt;/p>
+&lt;p>this would be represented as&lt;/p>
+&lt;p>P1+01.R1+02.R2+03.P1-31.R1-32.R2-33
+(remember this is purely descriptive so any order would still work)&lt;/p></content></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
 I’d be out on the streets making cash
 I’d go on trips above and beyond
 With the ones I love, staying out in the sun
