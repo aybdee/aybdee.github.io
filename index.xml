@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>:)</title><link>https://abundance-io.github.io/</link><description>Recent content on :)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 07 Dec 2022 01:00:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Burn The Future I</title><link>https://abundance-io.github.io/musings/burnthefuture/</link><pubDate>Wed, 07 Dec 2022 01:00:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/burnthefuture/</guid><description>It&amp;rsquo;s pretty late, i&amp;rsquo;m typing on my old tactile switch keyboard
 and thinking(well i&amp;rsquo;ve been thinking) about my future I feel like my perspective on what the future holds for me and my ideal future have changed a lot since I got to school (which is crazy considering it has just been a bit more than two years)
-what I first pictured for myself was the living-it-big entrepreneur with lots of control, money, and influence, all I needed to do was to be extremely good at what I do (which happens to be programming) get a really great job first then build a startup which blows up, makes me a lot of money, becomes a big business that gives me influence, I get to do the things I want with maximum freedom and live my life without monetary limits, et cetera et cetera.</description></item><item><title>Simulating Electric Circuits</title><link>https://abundance-io.github.io/posts/simulatingcircuits/</link><pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid><description>You probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
+what I first pictured for myself was the living-it-big entrepreneur with lots of control, money, and influence, all I needed to do was to be extremely good at what I do (which happens to be programming) get a really great job first then build a startup which blows up, makes me a lot of money, becomes a big business that gives me influence, I get to do the things I want with maximum freedom and live my life without monetary limits, et cetera et cetera.</description><content>&lt;p>It&amp;rsquo;s pretty late, i&amp;rsquo;m typing on my old tactile switch keyboard&lt;br>
+and thinking(well i&amp;rsquo;ve been thinking) about my future
+I feel like my perspective on what the future holds for me and my ideal future have changed a lot since I got to school (which is crazy considering it has just been a bit more than two years)&lt;/p>
+&lt;p>what I first pictured for myself was the living-it-big entrepreneur with lots of control, money, and influence, all I needed to do was to be extremely good at what I do (which happens to be programming) get a really great job first then build a startup which blows up, makes me a lot of money, becomes a big business that gives me influence, I get to do the things I want with maximum freedom and live my life without monetary limits, et cetera et cetera. I didn&amp;rsquo;t really pick running a business because it had any specific appeal to me, I mostly picked it because it seemed like the most surefire way to achieve the goals I had in mind&lt;/p>
+&lt;p>so what changed
+it&amp;rsquo;s really hard to put my finger on, I think the first thing was the feasibility of it all, I started to come to terms with how weirdly difficult life could be and how I wasn&amp;rsquo;t really as good at some things as I thought I was. There&amp;rsquo;s a lot more that went into this (for instance how I had serious problems specializing)
+but I don&amp;rsquo;t think i&amp;rsquo;ve got the strength to type all that)&lt;/p>
+&lt;p>In retrospect, it seems a little like I gave up and quit on my big dreams (did I ?)&lt;/p>
+&lt;p>The other main reason I changed is the more impactful one and for the most part why I&amp;rsquo;m writing this&lt;/p>
+&lt;p>I&amp;rsquo;d never really stopped to ask myself what I wanted out of life&lt;/p>
+&lt;p>not the cliche stuff like lots of money and lots of freedom (everybody wants that)&lt;/p>
+&lt;p>the harder questions that have a lot to do with tradeoffs&lt;/p>
+&lt;p>the thing is, it&amp;rsquo;s really easy to think about your future through the lens of big haughty dreams where you get to have it all without any cost (except your conveniently placed hard work)
+but in reality, life is full of tradeoffs&lt;/p>
+&lt;p>and so for better or worse, I was important I picked mine(or it is important?? (i&amp;rsquo;m not done picking yet))&lt;/p>
+&lt;p>So the question then is
+since I can&amp;rsquo;t have it all what were the most important things&lt;/p>
+&lt;p>I wanted to have
+you should probably note here that i&amp;rsquo;m by no means considering myself incompetent or trying to settle for anything less than the best possible version of my life&lt;/p>
+&lt;p>I just think it&amp;rsquo;s necessary for me to more clearly understand what i&amp;rsquo;m working towards and this is a way of establishing my priorities.&lt;/p></content></item><item><title>Simulating Electric Circuits</title><link>https://abundance-io.github.io/posts/simulatingcircuits/</link><pubDate>Sat, 22 Oct 2022 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/posts/simulatingcircuits/</guid><description>You probably didn&amp;rsquo;t know this but I&amp;rsquo;m a Computer Engineering major
 For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-) but one cool thing i&amp;rsquo;ve noticed during class is that electrical circuits are a pretty fascinating system with lots of simple rules that scale to form interesting patterns.
-Also, most of the moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour</description></item><item><title>recommendation systems</title><link>https://abundance-io.github.io/projects/spotify_competition/</link><pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition/</guid><description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
+Also, most of the moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour</description><content>&lt;p>You probably didn&amp;rsquo;t know this
+but I&amp;rsquo;m a Computer Engineering major&lt;/p>
+&lt;p>For a while i&amp;rsquo;ve been a having lot of classes on circuit theory(I find it unnecesarily complex and annoying beyond reason -_-)
+but one cool thing i&amp;rsquo;ve noticed during class is that electrical circuits are a pretty fascinating system
+with lots of simple rules that scale to form interesting patterns.&lt;/p>
+&lt;p>Also, most of the moving pieces involved are very clearly defined and for most of circuit analysis we usually focus on ideals so there&amp;rsquo;s very little undefined behaviour&lt;br>
+(DISCLAIMER - this doesn&amp;rsquo;t mean by any chance that I enjoy the subject in anyway
+(I hope circuit theory burns 😠))&lt;/p>
+&lt;p>but it does seem like something that could be really nice to write a simulation for&lt;/p>
+&lt;p>now i&amp;rsquo;m a pretty lazy person
+and when i have a cool idea like this i usually just check for a decently good implementation of it and see if i understand at least some of what they did
+or at the very least look for a specification and just implement that for sport or something.&lt;br>
+I checked, and a lot of the solutions out there were like high up professional grade stuff that my brain was too small to fathom
+and they didn&amp;rsquo;t really cover the use case i&amp;rsquo;m looking for (doing my homework :hehe)
+so this time I figured I&amp;rsquo;d implement it myself(hopefully this isn&amp;rsquo;t a big waste of time)&lt;/p>
+&lt;p>The first thing I had to figure out was how to represent an electric ciruit with text and verify that the circuits are valid
+(and build a simple interpeter for whatever I came up with)
+tbh at the start of this I had absolutely no intention of figuring that out on my own because it honestly seemed like a looooot of work
+(me no like work)
+but it was suprisingly shocking how little effort had been put towards solving that basic problem(text representation for circuits)
+even after expert googling(trust me i tried)
+I only found one random ass electronic stack exchange where the question was asked
+and all the guys that replied pointed out this thing called a SPICE netlist
+looks a little like this
+&lt;figure class="center" >
+&lt;img src="https://abundance-io.github.io/img/splice.jpg" style="border-radius: 8px;" />
+&lt;/figure>
+&lt;/p>
+&lt;p>I checked the syntax and honestly i&amp;rsquo;ll probably figure out a cure to cancer before i build anything to interpret that mess&lt;br>
+(a more constructive argument would be that i think it focused way to much on circuit connections in practice and not the conceptual thing so it seems more like instructions for patching a circuit than a representation and that&amp;rsquo;s not really what i&amp;rsquo;m going for&lt;br>
+That and it looks like it was made in the 70&amp;rsquo;s
+)&lt;/p>
+&lt;p>anyways as you probably guessed by now
+i was on my own
+and it was time to put on my big brain hat and figure this out
+i got my sad indie playlist queued up (dont judge me)
+and got to work&lt;/p>
+&lt;p>It took a few minutes(and consulting a friend)
+to figure out a working model for the circuit&lt;/p>
+&lt;p>first for the syntax I went with the easier handsoff approach
+the circuit components are represented based on how they would be connected on an &amp;ldquo;infinite&amp;rdquo; &lt;a href="%22https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all%22">breadboard&lt;/a>&lt;/p>
+&lt;figure class="center" >
+&lt;img src="https://abundance-io.github.io/img/breadboard.jpeg" style="border-radius: 8px;" />
+&lt;/figure>
+&lt;p>the holes on the breadboard are points where the electrical components are to be connected to
+and its basically a grid so a 2 -coordinate index can be used to identify each hole&lt;/p>
+&lt;p>each line on the breadboard represents a node and it&amp;rsquo;s a way of connecting multiple components to the same point(ie every component on the same line are connected to the same point)&lt;/p>
+&lt;p>so circuit representation &amp;hellip;&amp;hellip;&lt;br>
+a circuit is a list of connections(sequence doesn&amp;rsquo;t matter since this is descriptive) seperated by dots(meh why not)&lt;/p>
+&lt;p>to declare a connection all you need to is state the label for the component being connected, then it&amp;rsquo;s terminal ie + or - and then the hole where it would be connected to on the breadboard grid.&lt;br>
+since we dont have that many components involved (at least for now ) each component can be represented with a single letter and we can just add a count to reference each unique component for the label
+for now i think i&amp;rsquo;ll go with P for power source and R for resistor
+so P1 means the first power source&lt;/p>
+&lt;p>we end up with something like this&lt;/p>
+&lt;p>P1+01 -&amp;gt; (the positive terminal of the power source is plugged in at the 01 hole )&lt;/p>
+&lt;p>here&amp;rsquo;s what a complete circuit would look like&lt;/p>
+&lt;p>
+&lt;figure class="center" >
+&lt;img src="https://abundance-io.github.io/img/circuit_ex.png" style="border-radius: 8px;" />
+&lt;/figure>
+&lt;br>
+(conceptual diagam above, breadboard patch below)&lt;/p>
+&lt;p>this would be represented as&lt;/p>
+&lt;h3 id="p101r102r203p1-31r1-32r2-33">P1+01.R1+02.R2+03.P1-31.R1-32.R2-33&lt;/h3>
+&lt;p>(remember this is purely descriptive so any order would still work)
+(note that i&amp;rsquo;m starting the count from the third row(in relation to the diagram) so row no 3 has index 0 and so on&lt;/p></content></item><item><title>recommendation systems</title><link>https://abundance-io.github.io/projects/spotify_competition/</link><pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition/</guid><description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
 it usually involves building intricately complex systems with different with different architectures that usually piece together to make something big and beautiful(for the most part)
-A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
+A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description><content>&lt;p>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production
+aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work&lt;br>
+it usually involves building intricately complex systems with different
+with different architectures that usually piece together to make something big and beautiful(for the most part)&lt;/p>
+&lt;p>A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture
+and forget to make the things that would actually make their models functional &amp;hellip;.&lt;/p>
+&lt;p>so in the light of getting better at solving problems end to end with machine learning
+I decided to implement an industry level(i&amp;rsquo;m probably being generous here) recommendation system&lt;/p>
+&lt;p>finding one to implement was pretty hard tbh&lt;/p>
+&lt;p>at first i thought i&amp;rsquo;d try netflix
+()&lt;/p></content></item><item><title>Dr Cow</title><link>https://abundance-io.github.io/musings/drcow/</link><pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate><guid>https://abundance-io.github.io/musings/drcow/</guid><description>If only I wasn’t in this class
 I’d be out on the streets making cash
 I’d go on trips above and beyond
 With the ones I love, staying out in the sun
@@ -12,14 +106,121 @@ But sadly I’m stuck in this room right now
 With my least favorite teacher in the world dr cow
 Here seconds pass by like they were years
 And the distinct murmuring aches my ears
-Maybe if I think about a life</description></item><item><title/><link>https://abundance-io.github.io/projects/spotify_competition1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition1/</guid><description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
+Maybe if I think about a life</description><content>&lt;p>If only I wasn’t in this class&lt;br>
+I’d be out on the streets making cash&lt;br>
+I’d go on trips above and beyond&lt;br>
+With the ones I love, staying out in the sun&lt;br>
+But sadly I’m stuck in this room right now&lt;br>
+With my least favorite teacher in the world dr cow&lt;br>
+Here seconds pass by like they were years&lt;br>
+And the distinct murmuring aches my ears&lt;br>
+Maybe if I think about a life&lt;br>
+Or decide to end mine with a very sharp knife&lt;br>
+I’d at last be saved from harrowing hell&lt;br>
+Or at least find an excuse to stay in my cell&lt;br>
+Is it just me or does this class drive you mad&lt;br>
+It’s probably just the stomach ache making me sad&lt;br>
+Well , I guess that’s all for now&lt;br>
+Final words for my least favorite teacher Dr Cow&lt;/p></content></item><item><title/><link>https://abundance-io.github.io/projects/spotify_competition1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/projects/spotify_competition1/</guid><description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
 from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing
 basically matrix factorization as used in regular collaborative filtering problems
 where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions
-I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;.</description></item><item><title>About me</title><link>https://abundance-io.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/about/</guid><description>I&amp;rsquo;m Abundance, I&amp;rsquo;m a random person and I do random stuff
+I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;.</description><content>&lt;p>the initial model for candidate selection was WRMF(weight regularized matrix factorization)&lt;br>
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing&lt;/p>
+&lt;p>basically matrix factorization as used in regular collaborative filtering problems&lt;/p>
+&lt;p>where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions&lt;/p>
+&lt;p>I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;..)
+the creators of v16 link to a paper that more or less describes their specific approach to WRMF
+(Collaborative Filtering for Immediate Feedback Datasets)&lt;/p>
+&lt;p>it starts by distinguishing what immediate feedback recommendation problems are and the unique challenges that come as a result&lt;/p>
+&lt;p>(can&amp;rsquo;t really do the whole thing that would take forever)&lt;/p>
+&lt;p>for the most part,Implicit feedback problems occur when there aren&amp;rsquo;t any explicit(for lack of better word) metrics by which users rank the items that they interact with (usually in the form of a star rating or a ranking or something like that)
+instead what you have is just the data on how the user interacts with items , so stuff like how many times they bought something or clickedon a product)&lt;/p>
+&lt;p>generating recommendations for users from implicit feedback data is significantly different
+one because there isn&amp;rsquo;t any way of quantifying negative preference with the data
+(in a ranking system a 1 star rating means the user probably dislikes the product but there&amp;rsquo;s no such thing as negatively clicking a lick)&lt;/p>
+&lt;p>and then there&amp;rsquo;s also the fact that these kinds of data tend to be more noisy because not all interactions might come from the user
+(this is something that is largely mitigated with rating systems because most people ranking and starring products are doing it to show their personal preference in some way and would rarely bother ranking when someone else is involved)&lt;/p>
+&lt;p>lastly is just the increase in the overall complexity of the model for solving the problem
+with a simple numerical rating the problem is just to predict a specific score and
+the metrics for model success are pretty clear
+something like root mean square could probably suffice&lt;/p>
+&lt;p>with Implicit feedback it&amp;rsquo;s a little different '
+since we&amp;rsquo;re working with user interactions
+the model is predicting the likelihood of the user performing a certain interaction
+for all possible interactions&lt;/p>
+&lt;p>(that means we&amp;rsquo;ll have to consider things like availability of the item(whether the interaction can even happen in the first place),
+competition with other items, and repeat feedback(not quite sure what this is))&lt;/p></content></item><item><title>About me</title><link>https://abundance-io.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://abundance-io.github.io/about/</guid><description>I&amp;rsquo;m Abundance, I&amp;rsquo;m a random person and I do random stuff
 //say something cool about being a programmer
 what I really love tho is knowing stuff and talking about it
 also like to solve complex problems
 Stuff I know Computers. This probably goes without saying, but i think computers are really cool,
 I enjoy learning about how computers work under the hood ( you know, computer architectures and stuff)
-I also try to build a few low level projects when i can InshAllah</description></item></channel></rss>
+I also try to build a few low level projects when i can InshAllah</description><content>&lt;p>I&amp;rsquo;m Abundance, I&amp;rsquo;m a random person and I do random stuff&lt;br>
+//say something cool about being a programmer&lt;br>
+what I really love tho is knowing stuff and talking about it&lt;br>
+also like to solve complex problems&lt;/p>
+&lt;h1 id="stuff-i-know">Stuff I know&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>Computers. This probably goes without saying, but i think computers are really cool,&lt;br>
+I enjoy learning about how computers work under the hood (
+you know, computer architectures and stuff)&lt;br>
+I also try to build a few low level projects when i can InshAllah&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Rust. been learning this for some time, I try implementing some fairly complex projects every once in a while &lt;br>
+you should check them out&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Machine Learning. specifically know a lot about deep learning (gotta prepare for our AI overlords)
+work mostly with Pytorch(I&amp;rsquo;m pretty good with python)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Know lots of theory about random systems(mostly from &lt;del>failed&lt;/del> developing projects) &lt;br>
+notably there&amp;rsquo;s TCP/IP(just network stuff in general), git internals and operating systems&lt;br>
+&amp;ndash; this isn&amp;rsquo;t really an exhaustive list&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="other-stuff">Other Stuff&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>I read a lot of books on a lot of topics&lt;br>
+mostly never finish them (curse my short attention span 😭)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>I&amp;rsquo;m really into music &lt;br>
+like reaaaaaally into music &lt;br>
+literally catalog my memories by song &lt;br>
+I like mostly pop, 80&amp;rsquo;s, and chill indie stuff &lt;br>
+but I&amp;rsquo;ll listen to anything really&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>interested in cooking(sort of suck at it for now 😫)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="umm-what-else">umm what else?&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>favourite thing to do &lt;br>
+read a book(fiction, alternative reality, mind fucking)&lt;br>
+while listening to chill music and feeling happy with my life &lt;br>
+not something i do very often tho&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>A pretty close second is sharing fun moments with friends&lt;br>
+(i&amp;rsquo;ve got really cool friends)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>I love to spend money &lt;br>
+send me money please 🙂&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="find-me">Find me&lt;/h1>
+&lt;ul>
+&lt;li>on &lt;a href="https://github.com/abundance-io/">Github&lt;/a> please dont judge me 🙈&lt;/li>
+&lt;li>on &lt;a href="https://twitter.com/aybdee">Twitter&lt;/a>. I never post :)&lt;/li>
+&lt;li>Email me &lt;a href="mailto:abundanceanyanwu@gmail.com">abundanceanyanwu@gmail.com&lt;/a>. I&amp;rsquo;ll probably respond in a few years(except you&amp;rsquo;re a potential employer
+then consider me responded)&lt;/li>
+&lt;li>Discord aybdee#8360&lt;/li>
+&lt;/ul></content></item></channel></rss>
