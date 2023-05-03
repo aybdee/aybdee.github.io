@@ -14,7 +14,7 @@ hideComments = false
 
 It's pretty late, i'm typing on my old tactile switch keyboard  
 and thinking(well i've been thinking) about my future
-I feel like my perspective on what the future holds for me and my ideal future have changed a lot since I got to school (which is crazy considering it has just been a bit more than two years)
+I feel like my perspective on my ideal future has changed a lot since I got to school (which is crazy considering it has just been a bit more than two years)
 
 what I first pictured for myself was the living-it-big entrepreneur with lots of control, money, and influence, all I needed to do was to be extremely good at what I do (which happens to be programming) get a really great job first then build a startup which blows up, makes me a lot of money, becomes a big business that gives me influence, I get to do the things I want with maximum freedom and live my life without monetary limits, et cetera et cetera. I didn't really pick running a business because it had any specific appeal to me, I mostly picked it because it seemed like the most surefire way to achieve the goals I had in mind
 
