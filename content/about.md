@@ -35,6 +35,8 @@ also like to solve complex problems
   I like mostly pop, 80's, and chill indie stuff \
   but I'll listen to anything really
 
+- I dabble in writing every once in a while(mostly when i'm really bored)
+
 - interested in cooking(sort of suck at it for now 😫)
 
 # umm what else?
