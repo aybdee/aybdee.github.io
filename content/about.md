@@ -11,7 +11,7 @@ also like to solve complex problems
 
 - Computers. This probably goes without saying, but i think computers are really cool,  
   I enjoy learning about how computers work under the hood (
-  you know, computer architectures and stuff)  
+  you know, computer architecture and stuff)  
   I also try to build a few low level projects when i can InshAllah
 
 - Rust. been learning this for some time, I try implementing some fairly complex projects every once in a while \
@@ -24,6 +24,10 @@ also like to solve complex problems
   notably there's TCP/IP(just network stuff in general), git internals and operating systems\
   -- this isn't really an exhaustive list
 
+- Web Development - Kinda hate it but it pays i guess, mostly use React or Next for frontend (all in Typescript of course) and Express\
+  FastApi/Flask or django for backend
+  
+  
 # Other Stuff
 
 - I read a lot of books on a lot of topics\
@@ -43,7 +47,7 @@ also like to solve complex problems
 
 - favourite thing to do \
   read a book(fiction, alternative reality, mind fucking)\
-  while listening to chill music and feeling happy with my life \
+  while listening to nice music and feeling happy with my life \
   not something i do very often tho
 
 - A pretty close second is sharing fun moments with friends\
