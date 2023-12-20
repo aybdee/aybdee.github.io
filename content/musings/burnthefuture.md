@@ -12,7 +12,6 @@ readingTime = false
 hideComments = false
 +++
 
-Certainly, I can help you correct the grammatical errors in your text:
 
 It's pretty late, and I'm typing on my old tactile switch keyboard while thinking (well, I've been thinking) about my future. I feel like my perspective on my ideal future has changed a lot since I started school (which is crazy, considering it has only been a bit more than two years).
 
