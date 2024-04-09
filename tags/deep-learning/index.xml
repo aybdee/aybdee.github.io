@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deep Learning on :)</title><link>https://abundance-io.github.io/tags/deep-learning/</link><description>Recent content in Deep Learning on :)</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 30 Oct 2023 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Talking about GANS</title><link>https://abundance-io.github.io/scribbles/gantalking/</link><pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate><guid>https://abundance-io.github.io/scribbles/gantalking/</guid><description>think of an intro (something about how you haven&amp;rsquo;t done serious ML in a while and you decided to blitz through some GAN papers - maybe talk about how you want to colour manga using GANS (link to the paper) and how the paper didn&amp;rsquo;t make any sense at first)
+Before talking about GANS i think it&amp;rsquo;d be cool to talk about how computer scientists frame the problem of generating (data?</description><content>&lt;p>think of an intro
+(something about how you haven&amp;rsquo;t done serious ML in a while and you decided to blitz through some GAN papers - maybe talk about how you want to colour manga using GANS (link to the paper) and how the paper didn&amp;rsquo;t make any sense at first)&lt;/p>
+&lt;p>Before talking about GANS i think it&amp;rsquo;d be cool to talk about how computer scientists frame the problem of generating (data?)&lt;/p>
+&lt;p>we look at sample data(thats the patterns we want to generate as probability distributions) across some domain&lt;/p>
+&lt;p>if you&amp;rsquo;re not familiar with the term&lt;/p>
+&lt;p>&amp;ndash; drop wikipedia? definition of probability distributions here&lt;/p>
+&lt;p>probability distributions are the way we represent the likelihood that some data sample will occur at a point(in some number space)&lt;/p>
+&lt;p>an example with the MNIST dataset(if you&amp;rsquo;ve never heard of it it&amp;rsquo;s a dataset of handwritten digits sized 28x28)&lt;/p>
+&lt;p>since each image is 28x28 pixels we&amp;rsquo;ve got 784 (values?) for each image&lt;/p>
+&lt;p>say we represent that in a coordinate system with 784 dimensions(this isn&amp;rsquo;t something people really do - if we needed to though we&amp;rsquo;d need to use some sort of dimensionality reduction first)&lt;/p>
+&lt;p>we&amp;rsquo;d have 784^(784) possible data points that could occur
+but not every data point would be MNIST digits
+in fact most of it would be noise&lt;/p>
+&lt;p>a probability distribution for MNIST basically gives us a value between 0 and 1 for each data point that represents how likely that point is to be a number, kinda like a description
+all I&amp;rsquo;d need to do to (generate)? numbers if i had this distribution
+is take the data points with a high probability in the distribution&lt;/p>
+&lt;p>so in a way we can think of generating taking points from a probability distribution of the items we&amp;rsquo;re trying to generate (that are not included in the training set that we used to somehow do this)&lt;/p>
+&lt;p>ok so we&amp;rsquo;re hopefully up to speed..&lt;/p>
+&lt;p>Generative Adversarial Networks work by trying to make a new probability distribution that is as similar as possible to the intrinsic distribution of our training data&lt;/p>
+&lt;p>since all the information we have about this &amp;ldquo;intrinsic&amp;rdquo; distribution is its samples(our training data) you can also say GANs try to estimate a probability distribution(think a description for out ) from its observed samples&lt;/p></content></item></channel></rss>
