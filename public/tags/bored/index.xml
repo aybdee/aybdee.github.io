@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on :)</title>
-    <link>https://abundance-io.github.io/posts/</link>
-    <description>Recent content in Posts on :)</description>
+    <title>bored on :)</title>
+    <link>https://abundance-io.github.io/tags/bored/</link>
+    <description>Recent content in bored on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Jan 2023 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Jan 2023 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/bored/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>You Did This</title>
       <link>https://abundance-io.github.io/posts/youdidthis/</link>

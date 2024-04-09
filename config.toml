@@ -86,9 +86,9 @@ identifier = "about"
 name = "About"
 url = "/about"
 [[languages.en.menu.main]]
-identifier = "projects"
-name = "Projects"
-url = "/showcase"
+identifier = "scribbles"
+name = "Scribbles"
+url = "/scribbles"
 
 [[languages.en.menu.main]]
 identifier = "posts"

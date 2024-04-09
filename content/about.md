@@ -26,8 +26,7 @@ also like to solve complex problems
 
 - Web Development - Kinda hate it but it pays i guess, mostly use React or Next for frontend (all in Typescript of course) and Express\
   FastApi/Flask or django for backend
-  
-  
+
 # Other Stuff
 
 - I read a lot of books on a lot of topics\
@@ -62,4 +61,4 @@ also like to solve complex problems
 - on [Twitter](https://twitter.com/aybdee). I never post :)
 - Email me abundanceanyanwu@gmail.com. I'll probably respond in a few years(except you're a potential employer
   then consider me responded)
-- Discord aybdee#8360
+- Discord aybdee
