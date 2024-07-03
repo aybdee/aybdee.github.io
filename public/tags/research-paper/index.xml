@@ -5,17 +5,46 @@
     <link>https://abundance-io.github.io/tags/research-paper/</link>
     <description>Recent content in research paper on :)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 15 Oct 2022 12:46:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/research-paper/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 15 May 2023 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/research-paper/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>recommendation systems</title>
-      <link>https://abundance-io.github.io/projects/spotify_competition/</link>
-      <pubDate>Sat, 15 Oct 2022 12:46:12 +0100</pubDate>
+      <title>Replicating v16 spotify recommendation system</title>
+      <link>https://abundance-io.github.io/scribbles/v16spotify/</link>
+      <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/projects/spotify_competition/</guid>
-      <description>I&amp;rsquo;ve been thinking a lot recently about how most machine learning projects in production aren&amp;rsquo;t just about getting that one classifier neural network or something like that to work
-it usually involves building intricately complex systems with different with different architectures that usually piece together to make something big and beautiful(for the most part)
-A weird mistake a lot of ML practicioners(or at the very least just me ) make is that they tend to loose focus on the bigger picture and forget to make the things that would actually make their models functional &amp;hellip;.</description>
+      <guid>https://abundance-io.github.io/scribbles/v16spotify/</guid>
+      <description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing
+basically matrix factorization as used in regular collaborative filtering problems
+where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions
+I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;.</description>
+      <content>&lt;p&gt;the initial model for candidate selection was WRMF(weight regularized matrix factorization)&lt;br&gt;
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing&lt;/p&gt;
+&lt;p&gt;basically matrix factorization as used in regular collaborative filtering problems&lt;/p&gt;
+&lt;p&gt;where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions&lt;/p&gt;
+&lt;p&gt;I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;..)
+the creators of v16 link to a paper that more or less describes their specific approach to WRMF
+(Collaborative Filtering for Immediate Feedback Datasets)&lt;/p&gt;
+&lt;p&gt;it starts by distinguishing what immediate feedback recommendation problems are and the unique challenges that come as a result&lt;/p&gt;
+&lt;p&gt;(can&amp;rsquo;t really do the whole thing that would take forever)&lt;/p&gt;
+&lt;p&gt;for the most part,Implicit feedback problems occur when there aren&amp;rsquo;t any explicit(for lack of better word) metrics by which users rank the items that they interact with (usually in the form of a star rating or a ranking or something like that)
+instead what you have is just the data on how the user interacts with items , so stuff like how many times they bought something or clickedon a product)&lt;/p&gt;
+&lt;p&gt;generating recommendations for users from implicit feedback data is significantly different
+one because there isn&amp;rsquo;t any way of quantifying negative preference with the data
+(in a ranking system a 1 star rating means the user probably dislikes the product but there&amp;rsquo;s no such thing as negatively clicking a lick)&lt;/p&gt;
+&lt;p&gt;and then there&amp;rsquo;s also the fact that these kinds of data tend to be more noisy because not all interactions might come from the user
+(this is something that is largely mitigated with rating systems because most people ranking and starring products are doing it to show their personal preference in some way and would rarely bother ranking when someone else is involved)&lt;/p&gt;
+&lt;p&gt;lastly is just the increase in the overall complexity of the model for solving the problem
+with a simple numerical rating the problem is just to predict a specific score and
+the metrics for model success are pretty clear
+something like root mean square could probably suffice&lt;/p&gt;
+&lt;p&gt;with Implicit feedback it&amp;rsquo;s a little different
+since we&amp;rsquo;re working with user interactions
+the model is predicting the likelihood of the user performing a certain interaction
+for all possible interactions&lt;/p&gt;
+&lt;p&gt;(that means we&amp;rsquo;ll have to consider things like availability of the item(whether the interaction can even happen in the first place),
+competition with other items, and repeat feedback(not quite sure what this is))&lt;/p&gt;
+</content>
     </item>
     
   </channel>
