@@ -22,4 +22,4 @@ The other thing is how—how I'm going to keep doing this? How it feels? It feel
 
 It doesn't always have to be that way, though. It's only a problem if anyone knows. Just put your head down, don't say anything weird, and just pretend. That never killed anyone; what's it going to cost you? Well, I'm not sure. Not sure why I'm even writing this anyway.
 
-Maybe I write to understand, to find some sense of clarity amidst the confusion. Maybe I write because, in this solitude, I hope someone else feels the same way. Perhaps there's comfort in knowing that we're not alone in our questions, that our struggles with faith, or the lack thereof, are part of the human experience. And perhaps, just maybe, that's enough.
+Maybe I'm writing to understand, to find some sense of clarity amidst the confusion, maybe I'm wrting because, in this solitude, I hope someone else feels the same way. Perhaps there's comfort in knowing that we're not alone in our questions, that our struggles with faith, or the lack thereof, are part of the human experience. And perhaps, just maybe, that's enough.
