@@ -2,9 +2,9 @@
 title = "About me"
 +++
 
-I'm Abundance, I'm a random person and I do random stuff  
+I'm Abundance, I'm a random person (aren't we all) \
 //say something cool about being a programmer  
-what I really love tho is knowing stuff and talking about it  
+I like knowing stuff and talking about it  
 also like to solve complex problems
 
 # Stuff I know
