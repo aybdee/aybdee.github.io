@@ -85,17 +85,32 @@ logoHomeLink = "/"
 identifier = "about"
 name = "About"
 url = "/about"
-[[languages.en.menu.main]]
-identifier = "scribbles"
-name = "Scribbles"
-url = "/scribbles"
+weight = 1
+
 
 [[languages.en.menu.main]]
 identifier = "posts"
 name = "Posts"
 url = "/posts"
+weight = 2
+
 
 [[languages.en.menu.main]]
 identifier = "musings"
 name = "Musings"
 url = "/musings"
+weight = 3
+
+
+[[languages.en.menu.main]]
+identifier = "scribbles"
+name = "Scribbles"
+url = "/scribbles"
+weight = 4
+
+
+[[languages.en.menu.main]]
+identifier = "music"
+name = "Music"
+url = "/music"
+weight = 5

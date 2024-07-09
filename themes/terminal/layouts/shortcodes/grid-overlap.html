@@ -1,0 +1,23 @@
+{{ $columns := .Get "columns" | default "3" }}
+{{ $gap := .Get "gap" | default "20px" }}
+{{ $overlap := .Get "overlap" | default "50px" }}
+
+<div class="grid-overlap-container" style="--columns: {{ $columns }}; --gap: {{ $gap }}; --overlap: {{ $overlap }};">
+  {{ .Inner }}
+</div>
+
+<style>
+.grid-overlap-container {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--gap);
+}
+
+.grid-overlap-container > * {
+  margin-bottom: calc(-1 * var(--overlap));
+}
+
+.grid-overlap-container > *:nth-last-child(-n+{{ $columns }}) {
+  margin-bottom: 0;
+}
+</style>

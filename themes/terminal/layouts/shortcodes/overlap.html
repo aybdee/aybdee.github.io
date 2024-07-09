@@ -1,0 +1,20 @@
+{{ $overlap := .Get 0 | default "50px" }}
+
+<div class="overlap-container" style="--overlap: {{ $overlap }};">
+  {{ .Inner }}
+</div>
+
+<style>
+.overlap-container {
+  position: relative;
+}
+
+.overlap-container > * {
+  position: relative;
+  margin-bottom: calc(-1 * var(--overlap));
+}
+
+.overlap-container > *:last-child {
+  margin-bottom: 0;
+}
+</style>
