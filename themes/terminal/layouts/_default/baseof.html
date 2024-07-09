@@ -6,6 +6,18 @@
   {{ end }}
   {{ partial "head.html" . }}
 </head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E4TTEGH2X0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E4TTEGH2X0');
+</script>
+
+  
 <body class="{{- ( or .Params.color $.Site.Params.ThemeColor ) -}}">
 {{ $container := cond ($.Site.Params.FullWidthTheme | default false) "container full" (cond ($.Site.Params.CenterTheme | default false) "container center" "container") }}
 
