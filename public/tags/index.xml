@@ -2,117 +2,137 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on :)</title>
-    <link>https://abundance-io.github.io/tags/</link>
+    <link>https://aybdee.xyz/tags/</link>
     <description>Recent content in Tags on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 Oct 2023 10:57:12 +0100</lastBuildDate><atom:link href="https://abundance-io.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jul 2024 01:00:12 +0100</lastBuildDate><atom:link href="https://aybdee.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>introspective</title>
+      <link>https://aybdee.xyz/tags/introspective/</link>
+      <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
+      
+      <guid>https://aybdee.xyz/tags/introspective/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>religion</title>
+      <link>https://aybdee.xyz/tags/religion/</link>
+      <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
+      
+      <guid>https://aybdee.xyz/tags/religion/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>Deep Learning</title>
-      <link>https://abundance-io.github.io/tags/deep-learning/</link>
+      <link>https://aybdee.xyz/tags/deep-learning/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/deep-learning/</guid>
+      <guid>https://aybdee.xyz/tags/deep-learning/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>GANs</title>
-      <link>https://abundance-io.github.io/tags/gans/</link>
+      <link>https://aybdee.xyz/tags/gans/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/gans/</guid>
+      <guid>https://aybdee.xyz/tags/gans/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>machine learning</title>
-      <link>https://abundance-io.github.io/tags/machine-learning/</link>
+      <link>https://aybdee.xyz/tags/machine-learning/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/machine-learning/</guid>
+      <guid>https://aybdee.xyz/tags/machine-learning/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>research paper</title>
-      <link>https://abundance-io.github.io/tags/research-paper/</link>
+      <link>https://aybdee.xyz/tags/research-paper/</link>
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/research-paper/</guid>
+      <guid>https://aybdee.xyz/tags/research-paper/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>spotify</title>
-      <link>https://abundance-io.github.io/tags/spotify/</link>
+      <link>https://aybdee.xyz/tags/spotify/</link>
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/spotify/</guid>
+      <guid>https://aybdee.xyz/tags/spotify/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>bored</title>
-      <link>https://abundance-io.github.io/tags/bored/</link>
+      <link>https://aybdee.xyz/tags/bored/</link>
       <pubDate>Mon, 30 Jan 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/bored/</guid>
+      <guid>https://aybdee.xyz/tags/bored/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>story</title>
-      <link>https://abundance-io.github.io/tags/story/</link>
+      <link>https://aybdee.xyz/tags/story/</link>
       <pubDate>Mon, 30 Jan 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/story/</guid>
+      <guid>https://aybdee.xyz/tags/story/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>spective</title>
-      <link>https://abundance-io.github.io/tags/spective/</link>
+      <link>https://aybdee.xyz/tags/spective/</link>
       <pubDate>Wed, 07 Dec 2022 01:00:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/spective/</guid>
+      <guid>https://aybdee.xyz/tags/spective/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>pain</title>
-      <link>https://abundance-io.github.io/tags/pain/</link>
+      <link>https://aybdee.xyz/tags/pain/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/pain/</guid>
+      <guid>https://aybdee.xyz/tags/pain/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>poems</title>
-      <link>https://abundance-io.github.io/tags/poems/</link>
+      <link>https://aybdee.xyz/tags/poems/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/poems/</guid>
+      <guid>https://aybdee.xyz/tags/poems/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>randomstuff</title>
-      <link>https://abundance-io.github.io/tags/randomstuff/</link>
+      <link>https://aybdee.xyz/tags/randomstuff/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://abundance-io.github.io/tags/randomstuff/</guid>
+      <guid>https://aybdee.xyz/tags/randomstuff/</guid>
       <description></description>
       <content></content>
     </item>
