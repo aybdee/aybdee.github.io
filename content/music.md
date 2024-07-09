@@ -51,11 +51,10 @@ i can only embed so many iframes, so i'll just change this from time to time
 mostly not mine
 
 {{< overlap  "80px" >}}
-{{< spotify type="playlist" id="5Ja1FxGdf2EkCXKI9GbiHM" width=200%" height="150" >}}
 {{< spotify type="playlist" id="2XBAoyiKt0i6OjBrSOHkTm" width=200%" height="150" >}}
-{{< spotify type="playlist" id="6IuN23dwpN655ktSCgJtY1" width=200%" height="150" >}}
 {{< spotify type="playlist" id="4Rmcm34tAkr9lBLY7CJaXn" width=200%" height="150" >}}
 {{< spotify type="playlist" id="59qVLsf3xTopY8Zcn3UOxn" width=200%" height="150" >}}
+{{< spotify type="playlist" id="5Ja1FxGdf2EkCXKI9GbiHM" width=200%" height="150" >}}
 {{< spotify type="playlist" id="51xhpyO3xg0AUO4Wcdxv1k" width=200%" height="150" >}}
 {{< spotify type="playlist" id="5cXmXTFJ5LoM9nhK1QcwTn" width=200%" height="150" >}}
 {{</ overlap >}}
