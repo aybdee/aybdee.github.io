@@ -1,5 +1,5 @@
 +++
-title = "About me"
+title = "About me (Circa 2022)"
 +++
 
 I'm Abundance, I'm a random person (aren't we all) \
