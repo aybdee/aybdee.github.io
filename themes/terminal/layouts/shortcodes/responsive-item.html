@@ -1,0 +1,26 @@
+<div class="responsive-item">
+  <div class="small-screen">
+    {{ .Inner | safeHTML }}
+  </div>
+  <div class="large-screen">
+    {{ .Inner | safeHTML }}
+  </div>
+</div>
+
+<style>
+   .small-screen {
+    display: none;
+  }
+   .large-screen {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .small-screen {
+      display: block;
+    }
+    .large-screen {
+      display: none;
+    }
+  }
+</style>

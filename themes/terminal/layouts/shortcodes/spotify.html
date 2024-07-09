@@ -6,7 +6,6 @@ Parameters:
     height - (Optional) height
 -->
 
-<figure>
 {{ if .IsNamedParams }}
 <iframe src="https://open.spotify.com/embed/{{ .Get "type" }}/{{ .Get "id" }}"
     width="{{ default "100%" (.Get "width") }}"
@@ -22,4 +21,3 @@ Parameters:
     allowtransparency="true"
     allow="encrypted-media"></iframe>
 {{ end }}
-</figure>
