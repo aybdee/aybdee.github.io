@@ -14,7 +14,7 @@ hideComments = false
 
 I wish I could remember like it was yesterday, all I really remember are flashes, flashes of the most horrible moments of my life.
 
-I'd just finished evening lessons and I had to go back home, it was the same old routine, I'd done this for about three years, pick my little sister and take the A11 bus back home .On the way back we'd meet Brad, he's this guy from the prep school next to mine that I've been datin
+I'd just finished evening lessons and I had to go back home, it was the same old routine, I'd done this for about three years, pick my little sister and take the A11 bus back home .On the way back we'd meet Brad, he's this guy from the prep school next to mine that I've been dating
 for a while.
 
 He's really nice and I enjoy talking with him. we'd get to the crossing and my sister would beg for me to let her cross the road alone because she was 9 now and a big girl and everyday I'd say
