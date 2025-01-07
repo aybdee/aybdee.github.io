@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>research paper on :)</title>
-    <link>https://aybdee.xyz/tags/research-paper/</link>
-    <description>Recent content in research paper on :)</description>
+    <title>Research Paper on :)</title>
+    <link>http://localhost:1313/tags/research-paper/</link>
+    <description>Recent content in Research Paper on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 May 2023 10:57:12 +0100</lastBuildDate><atom:link href="https://aybdee.xyz/tags/research-paper/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 May 2023 10:57:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/research-paper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Replicating v16 spotify recommendation system</title>
-      <link>https://aybdee.xyz/scribbles/v16spotify/</link>
+      <link>http://localhost:1313/scribbles/v16spotify/</link>
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/scribbles/v16spotify/</guid>
+      <guid>http://localhost:1313/scribbles/v16spotify/</guid>
       <description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
 from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing
 basically matrix factorization as used in regular collaborative filtering problems

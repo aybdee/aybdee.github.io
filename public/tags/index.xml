@@ -2,137 +2,167 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on :)</title>
-    <link>https://aybdee.xyz/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jul 2024 01:00:12 +0100</lastBuildDate><atom:link href="https://aybdee.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Nov 2024 05:57:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>introspective</title>
-      <link>https://aybdee.xyz/tags/introspective/</link>
-      <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
+      <title>Writing</title>
+      <link>http://localhost:1313/tags/writing/</link>
+      <pubDate>Tue, 05 Nov 2024 05:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/introspective/</guid>
+      <guid>http://localhost:1313/tags/writing/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>religion</title>
-      <link>https://aybdee.xyz/tags/religion/</link>
+      <title>Rust</title>
+      <link>http://localhost:1313/tags/rust/</link>
+      <pubDate>Sat, 26 Oct 2024 05:57:12 +0100</pubDate>
+      
+      <guid>http://localhost:1313/tags/rust/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Simulation</title>
+      <link>http://localhost:1313/tags/simulation/</link>
+      <pubDate>Sat, 26 Oct 2024 05:57:12 +0100</pubDate>
+      
+      <guid>http://localhost:1313/tags/simulation/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Introspective</title>
+      <link>http://localhost:1313/tags/introspective/</link>
       <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/religion/</guid>
+      <guid>http://localhost:1313/tags/introspective/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Religion</title>
+      <link>http://localhost:1313/tags/religion/</link>
+      <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
+      
+      <guid>http://localhost:1313/tags/religion/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>Deep Learning</title>
-      <link>https://aybdee.xyz/tags/deep-learning/</link>
+      <link>http://localhost:1313/tags/deep-learning/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/deep-learning/</guid>
+      <guid>http://localhost:1313/tags/deep-learning/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>GANs</title>
-      <link>https://aybdee.xyz/tags/gans/</link>
+      <link>http://localhost:1313/tags/gans/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/gans/</guid>
+      <guid>http://localhost:1313/tags/gans/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>machine learning</title>
-      <link>https://aybdee.xyz/tags/machine-learning/</link>
+      <title>Machine Learning</title>
+      <link>http://localhost:1313/tags/machine-learning/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/machine-learning/</guid>
+      <guid>http://localhost:1313/tags/machine-learning/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>research paper</title>
-      <link>https://aybdee.xyz/tags/research-paper/</link>
+      <title>Research Paper</title>
+      <link>http://localhost:1313/tags/research-paper/</link>
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/research-paper/</guid>
+      <guid>http://localhost:1313/tags/research-paper/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>spotify</title>
-      <link>https://aybdee.xyz/tags/spotify/</link>
+      <title>Spotify</title>
+      <link>http://localhost:1313/tags/spotify/</link>
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/spotify/</guid>
+      <guid>http://localhost:1313/tags/spotify/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>bored</title>
-      <link>https://aybdee.xyz/tags/bored/</link>
+      <title>Bored</title>
+      <link>http://localhost:1313/tags/bored/</link>
       <pubDate>Mon, 30 Jan 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/bored/</guid>
+      <guid>http://localhost:1313/tags/bored/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>story</title>
-      <link>https://aybdee.xyz/tags/story/</link>
+      <title>Story</title>
+      <link>http://localhost:1313/tags/story/</link>
       <pubDate>Mon, 30 Jan 2023 10:57:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/story/</guid>
+      <guid>http://localhost:1313/tags/story/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>spective</title>
-      <link>https://aybdee.xyz/tags/spective/</link>
+      <title>Spective</title>
+      <link>http://localhost:1313/tags/spective/</link>
       <pubDate>Wed, 07 Dec 2022 01:00:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/spective/</guid>
+      <guid>http://localhost:1313/tags/spective/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>pain</title>
-      <link>https://aybdee.xyz/tags/pain/</link>
+      <title>Pain</title>
+      <link>http://localhost:1313/tags/pain/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/pain/</guid>
+      <guid>http://localhost:1313/tags/pain/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>poems</title>
-      <link>https://aybdee.xyz/tags/poems/</link>
+      <title>Poems</title>
+      <link>http://localhost:1313/tags/poems/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/poems/</guid>
+      <guid>http://localhost:1313/tags/poems/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
-      <title>randomstuff</title>
-      <link>https://aybdee.xyz/tags/randomstuff/</link>
+      <title>Randomstuff</title>
+      <link>http://localhost:1313/tags/randomstuff/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/tags/randomstuff/</guid>
+      <guid>http://localhost:1313/tags/randomstuff/</guid>
       <description></description>
       <content></content>
     </item>

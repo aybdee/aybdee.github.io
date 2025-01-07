@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Musings on :)</title>
-    <link>https://aybdee.xyz/musings/</link>
+    <link>http://localhost:1313/musings/</link>
     <description>Recent content in Musings on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Jul 2024 01:00:12 +0100</lastBuildDate><atom:link href="https://aybdee.xyz/musings/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jul 2024 01:00:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/musings/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>On the Past Little while</title>
-      <link>https://aybdee.xyz/musings/onthepastlittlewhile/</link>
+      <link>http://localhost:1313/musings/onthepastlittlewhile/</link>
       <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/musings/onthepastlittlewhile/</guid>
+      <guid>http://localhost:1313/musings/onthepastlittlewhile/</guid>
       <description>The spiritual controls the physical. That&amp;rsquo;s how I, like many others around me, have been brought up to live my life—to see everything through the lens of spirituality. Whether you succeeded or failed, your emotions, whether your life was worth anything, whether you got to live the next second or die right now, all of it was determined by your relationship with God. He was the key, the only thing that mattered.</description>
       <content>&lt;p&gt;The spiritual controls the physical. That&amp;rsquo;s how I, like many others around me, have been brought up to live my life—to see everything through the lens of spirituality. Whether you succeeded or failed, your emotions, whether your life was worth anything, whether you got to live the next second or die right now, all of it was determined by your relationship with God. He was the key, the only thing that mattered. He had all the answers, and all you needed to do was just love and serve Him.&lt;/p&gt;
 &lt;p&gt;For a while now, I&amp;rsquo;ve been moving away from all that. In some ways, maybe I was never really fully in it to begin with. It&amp;rsquo;s left me with a lot on my mind&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Burn The Future I</title>
-      <link>https://aybdee.xyz/musings/burnthefuture/</link>
+      <link>http://localhost:1313/musings/burnthefuture/</link>
       <pubDate>Wed, 07 Dec 2022 01:00:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/musings/burnthefuture/</guid>
+      <guid>http://localhost:1313/musings/burnthefuture/</guid>
       <description>It&amp;rsquo;s pretty late, and I&amp;rsquo;m typing on my old tactile switch keyboard while thinking (well, I&amp;rsquo;ve been thinking) about my future. I feel like my perspective on my ideal future has changed a lot since I started school (which is crazy, considering it has only been a bit more than two years).
 What I first pictured for myself was the life of a successful entrepreneur with lots of control, money, and influence.</description>
       <content>&lt;p&gt;It&amp;rsquo;s pretty late, and I&amp;rsquo;m typing on my old tactile switch keyboard while thinking (well, I&amp;rsquo;ve been thinking) about my future. I feel like my perspective on my ideal future has changed a lot since I started school (which is crazy, considering it has only been a bit more than two years).&lt;/p&gt;
@@ -45,10 +45,10 @@ What I first pictured for myself was the life of a successful entrepreneur with 
     
     <item>
       <title>Dr Cow</title>
-      <link>https://aybdee.xyz/musings/drcow/</link>
+      <link>http://localhost:1313/musings/drcow/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>https://aybdee.xyz/musings/drcow/</guid>
+      <guid>http://localhost:1313/musings/drcow/</guid>
       <description>If only I wasn’t in this class
 I’d be out on the streets making cash
 I’d go on trips above and beyond
