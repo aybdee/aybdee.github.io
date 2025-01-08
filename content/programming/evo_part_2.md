@@ -1,6 +1,6 @@
 +++
 title = "Building Evo Part 2"
-draft=true
+draft=false
 date = "2025-01-07T05:57:12+01:00"
 author = "abundance"
 authorTwitter = "aybdee" #do not include @
@@ -13,14 +13,13 @@ readingTime = false
 hideComments = false
 +++
 
-On todays' episode of building evo, i'm going over the basic sdl2 implementation, Hopefully  you've read the first [post](https://aybdee.xyz/posts/evo_part_1/) and you know what evo is, and you also know that i moved from using sdl2 to bevy. This post is just going over what i was able to do before switching because i think that might be interesting to read. 
+On todays' episode of building evo, i'm going over the basic sdl2 implementation, Hopefully you've read the first [post](https://aybdee.xyz/posts/evo_part_1/) and you know what evo is, and you also know that i moved from using sdl2 to bevy. This post is just going over what i was able to do before switching because i think that might be interesting to read.
 
 That said, I didn't really go far with using sdl2. I implemented basic graphics and a view for the organisms, organism tracking within the environment, and wall stacking (ONLY for organisms going in the same direction). Getting organisms to stack on walls was a real pain, it took more than a month(including procrastination time) to figure out, or maybe it's a skill issue.
 
-
-
 ## Basic Setup
-First thing to look at is my window and running loop setup, if you're not really familiar with using sdl2 and this doesn't really make sense, you can look at [this](https://wiki.libsdl.org/SDL2/Tutorials). It's a really nice resource that can hopefully help. 
+
+First thing to look at is my window and running loop setup, if you're not really familiar with using sdl2 and this doesn't really make sense, you can look at [this](https://wiki.libsdl.org/SDL2/Tutorials). It's a really nice resource that can hopefully help.
 
 ```rust
 use std::thread::sleep;
@@ -72,8 +71,8 @@ pub fn main() -> Result<(), String> {
 
 I dont think there's too much to talk about here, i'm using the rust_sdl2 crate with the opengl backend for rendering. I setup some constants for the whole rendering process. Also, I kept mixing up the rows,columns and x-y coordinates throughout the code(I think i'm window dyslexic). So I had to literally comment "WIDTH means number of columns that means x" so i wouldn't forget. for now the running loop is just sleeping till you press the escape key then it quits. One weird thing i randomly noticed though is that if you dont put a sleep in the running loop then it crashes instead of closing, this probably happens because we're not giving sdl2 enough time to process events properly(i'm just speculating, couldn't really find any resources on this)
 
-
 ## Environment and Organism Representation
+
 The environment is basically a 2-dimensional grid where each cell in the grid can only hold one organism and organisms are represented with the **Organism** struct that stores the colour and cell index for the organism. I'm also keeping a map of each organism to it's index, I thought having the Grid work with just indices instead of storing the organisms directly in the grid was better because it allowed for a nicer seperation of concerns and I felt that the Organism struct would only get more and more complex. I didn't want a situation where i'd have to keep changing the grid implementation
 
 ```rust
@@ -138,10 +137,8 @@ impl Grid {
 }
 ```
 
+## Rendering
 
-
-
-## Rendering 
 I'm drawing everything for this on an SDL2 canvas, because i googled how to draw rectangles in sdl2 and that was what came up. I think there are other ways to do this, off the top of my head you could also use a texture, and i think that's actually more performant because textures are stored and processed on the GPU. To make the drawing process a bit easier I made a nice Renderer struct to just abstract over the basic drawing functionalities you'd need. it takes a WindowCanvas and a point size variable which represents the size of individual points on the canvas(a point in the canvas corresponds to an organism so the point size just corresponds to the size of each organism on screen). In retrospect i wonder why i passed an owned WindowCanvas instead of a mutable reference, probably to avoid working with lifetimes. (I'm lazy like that).
 
 ```rust
@@ -193,7 +190,7 @@ pub fn render_text(&mut self, text: &str, font: Font, position: Point) -> Result
 
 What do you mean there's no write function that just puts the text on the screen, are we in the stone ages ?
 
-Anyways, I pass a reference to the **Renderer** into **State** like so. 
+Anyways, I pass a reference to the **Renderer** into **State** like so.
 
 ```rust
 #[derive(Debug)]
@@ -238,6 +235,7 @@ impl State{
 ```
 
 ## Updated Running Loop
+
 I updated the running loop to re-render the organisms on each iteration like so
 
 ```rust
@@ -255,6 +253,5 @@ pub fn main() -> Result<(), String> {
 I think i'll stop here for now, don't want to make this too long
 
 Till next time.
-
 
 Authors Note - I mixed up the rows and columns while i was writing this 😭, i need help.
