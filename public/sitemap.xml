@@ -5,23 +5,11 @@
     <loc>http://localhost:1313/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/programming/evo_part_2/</loc>
-    <lastmod>2025-01-07T05:57:12+01:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/programming/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rust/</loc>
-    <lastmod>2025-01-07T05:57:12+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/sdl2/</loc>
-    <lastmod>2025-01-07T05:57:12+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/simulation/</loc>
-    <lastmod>2025-01-07T05:57:12+01:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-01-07T05:57:12+01:00</lastmod>
+    <lastmod>2024-11-05T05:57:12+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/writing/to_feel/</loc>
     <lastmod>2024-11-05T05:57:12+01:00</lastmod>
@@ -33,6 +21,12 @@
     <lastmod>2024-11-05T05:57:12+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/programming/evo_part_1/</loc>
+    <lastmod>2024-10-26T05:57:12+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rust/</loc>
+    <lastmod>2024-10-26T05:57:12+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/simulation/</loc>
     <lastmod>2024-10-26T05:57:12+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/introspective/</loc>
