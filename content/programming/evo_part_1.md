@@ -20,10 +20,7 @@ A few months ago, I saw this really cool [YouTube video](https://www.youtube.com
 Evo is a system that simulates natural selection. Well, what is natural selection? It's basically a process where organisms better adapted to their environment tend to survive and reproduce, passing on favorable traits to their offspring. Over generations, this leads to the evolution of populations.  
 The point of Evo is to try to replicate this digitally, creating a small world where "digital organisms" evolve to adapt to their environment.
 
-The neural network for each organism is encoded as a "genome," which is just a string representation of the network’s structure and weights. Analogous to biology, the genome defines the organism's behavior.
-
-To simulate natural selection, you need organisms. The way we represent the organisms in this system is with a simple neural net.  
-If you haven't heard of those, a neural net is a system inspired by the human brain. It consists of layers of interconnected nodes (neurons). 
+To simulate natural selection, you need organisms. The way we represent the organisms in this system is with a simple neural net. If you haven't heard of those, a neural net is a system inspired by the human brain. It consists of layers of interconnected nodes (neurons). 
 
 To make organisms from neural nets, we implement them such that the input neurons take in information from the organism's environment (basically its senses), and the output neurons cause the organism to perform an action.
 

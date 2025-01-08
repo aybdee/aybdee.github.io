@@ -6,7 +6,7 @@ theme = 'terminal'
 [params]
 # dir name of your main content (default is `content/posts`).
 # the list of set content will show up on your index page (baseurl).
-contentTypeName = "posts"
+contentTypeName = "programming"
 
 # ["orange", "blue", "red", "green", "pink"]
 themeColor = "pink"
@@ -89,21 +89,28 @@ weight = 1
 
 
 [[languages.en.menu.main]]
-identifier = "posts"
-name = "Posts"
-url = "/posts"
+identifier = "programming"
+name = "Programming"
+url = "/programming"
 weight = 2
+
+
+[[languages.en.menu.main]]
+identifier = "writing"
+name = "Writing"
+url = "/writing"
+weight = 3
 
 
 [[languages.en.menu.main]]
 identifier = "musings"
 name = "Musings"
 url = "/musings"
-weight = 3
+weight = 4
 
 
 [[languages.en.menu.main]]
 identifier = "scribbles"
 name = "Scribbles"
 url = "/scribbles"
-weight = 4
+weight = 5

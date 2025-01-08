@@ -6,20 +6,209 @@
     <description>Recent content in Posts on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 08 Jan 2025 05:57:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jan 2025 05:57:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>To Feel</title>
-      <link>http://localhost:1313/posts/to_feel/</link>
-      <pubDate>Tue, 05 Nov 2024 05:57:12 +0100</pubDate>
+      <title>Building Evo Part 2</title>
+      <link>http://localhost:1313/posts/evo_part_2/</link>
+      <pubDate>Tue, 07 Jan 2025 05:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/posts/to_feel/</guid>
-      <description>When it first got out that I cut myself, the question I got asked the most was why. My parents, my friends—none of them could understand it. Why would you do something that physically harmed you over and over? Didn’t you feel the pain? Well, of course it hurts. That’s why I do it. I do it because sometimes it seems like pain is the only way I can feel anything.</description>
-      <content>&lt;p&gt;When it first got out that I cut myself, the question I got asked the most was why. My parents, my friends—none of them could understand it. Why would you do something that physically harmed you over and over? Didn’t you feel the pain? Well, of course it hurts. That’s why I do it. I do it because sometimes it seems like pain is the only way I can feel anything.&lt;/p&gt;
-&lt;p&gt;What is feeling anyway? It’s this random thing that we take for granted. We all just feel feelings, and that’s that. Happy, angry, bored. The feelings we feel are what make life worth living. We experience a lot of things in life, but it&amp;rsquo;s usually the emotions attached to those things that we remember most.&lt;/p&gt;
-&lt;p&gt;For a while now, I haven’t been able to feel anything. The things that made me happy or upset, the feeling of love, of joy—just everything. It’s all been replaced with numbness, like this empty feeling. I guess emptiness is a feeling in its own way. Maybe that’s a bit of a consolation. I’m not a psychopath or anything. I know when to laugh or smile, and I’m pretty good with consoling people when they’re sad. I guess if you knew me personally, you probably wouldn’t notice. Most people around me didn’t, anyways—that is, until they saw the cuts.&lt;/p&gt;
-&lt;p&gt;When I tell people I feel numb, they always ask what caused it, or maybe who. And the thing is, I don’t really know. I just started waking up each morning feeling a little down, and it got worse and worse until we got here. In some ways, I cut to give my problems meaning. If I’m a normal guy with okay parents and decent friends feeling down, then it’s not really that big of a deal. But if I’m the guy who, despite seeming okay, was going through something so terrible inside that it caused him to hurt himself—then the problems become real. Cutting helped me feel like what I was going through was real in a way.&lt;/p&gt;
-&lt;p&gt;I guess the last question I get asked is why pain. Why did I, for some reason, feel like pain was the only thing I was capable of feeling? Well, it’s because pain is pretty straightforward. Our bodies always feel it. A knife cut will hurt like a bitch whether you’re depressed or the happiest person alive. There’s a kind of certainty to it, it’s comforting.&lt;/p&gt;
-&lt;p&gt;#disclaimer - this does not reflect my personal experiences&lt;/p&gt;
+      <guid>http://localhost:1313/posts/evo_part_2/</guid>
+      <description>On todays&amp;rsquo; episode of building evo, i&amp;rsquo;m going over the basic sdl2 implementation, Hopefully you&amp;rsquo;ve read the first post and you know what evo is, and you also know that i moved from using sdl2 to bevy. This post is just going over what i was able to do before switching because i think that might be interesting to read.
+That said, I didn&amp;rsquo;t really go far with using sdl2. I implemented basic graphics and a view for the organisms, organism tracking within the environment, and wall stacking (ONLY for organisms going in the same direction).</description>
+      <content>&lt;p&gt;On todays&amp;rsquo; episode of building evo, i&amp;rsquo;m going over the basic sdl2 implementation, Hopefully  you&amp;rsquo;ve read the first &lt;a href=&#34;https://aybdee.xyz/posts/evo_part_1/&#34;&gt;post&lt;/a&gt; and you know what evo is, and you also know that i moved from using sdl2 to bevy. This post is just going over what i was able to do before switching because i think that might be interesting to read.&lt;/p&gt;
+&lt;p&gt;That said, I didn&amp;rsquo;t really go far with using sdl2. I implemented basic graphics and a view for the organisms, organism tracking within the environment, and wall stacking (ONLY for organisms going in the same direction). Getting organisms to stack on walls was a real pain, it took more than a month(including procrastination time) to figure out, or maybe it&amp;rsquo;s a skill issue.&lt;/p&gt;
+&lt;h2 id=&#34;basic-setup&#34;&gt;Basic Setup&lt;/h2&gt;
+&lt;p&gt;First thing to look at is my window and running loop setup, if you&amp;rsquo;re not really familiar with using sdl2 and this doesn&amp;rsquo;t really make sense, you can look at &lt;a href=&#34;https://wiki.libsdl.org/SDL2/Tutorials&#34;&gt;this&lt;/a&gt;. It&amp;rsquo;s a really nice resource that can hopefully help.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::thread::sleep;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::time::Duration;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; graphics::Renderer;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; sdl2::event::Event;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; sdl2::keyboard::Keycode;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; sdl2::pixels::Color;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; sdl2::rect::Point;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_WIDTH&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;800&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;//num columns(x)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_HEIGHT&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;600&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;//num rows(y)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FPS&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u64&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; sdl_context &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdl2::init()&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; video_subsystem &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdl_context.video()&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; window &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; video_subsystem
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .window(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Evo - natural selection&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_WIDTH&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_HEIGHT&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .opengl()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .build()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .map_err(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.to_string())&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; event_pump &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdl_context.event_pump()&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; point_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; renderer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Renderer::new(window, point_size)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;running&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;loop&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; event &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; event_pump.poll_iter() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt; event {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Event::Quit { &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; Event::KeyDown {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    keycode: Some(Keycode::Escape),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                } &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt; &amp;#39;running,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                _ &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        sleep(Duration::from_millis(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Ok(())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I dont think there&amp;rsquo;s too much to talk about here, i&amp;rsquo;m using the rust_sdl2 crate with the opengl backend for rendering. I setup some constants for the whole rendering process. Also, I kept mixing up the rows,columns and x-y coordinates throughout the code(I think i&amp;rsquo;m window dyslexic). So I had to literally comment &amp;ldquo;WIDTH means number of columns that means x&amp;rdquo; so i wouldn&amp;rsquo;t forget. for now the running loop is just sleeping till you press the escape key then it quits. One weird thing i randomly noticed though is that if you dont put a sleep in the running loop then it crashes instead of closing, this probably happens because we&amp;rsquo;re not giving sdl2 enough time to process events properly(i&amp;rsquo;m just speculating, couldn&amp;rsquo;t really find any resources on this)&lt;/p&gt;
+&lt;h2 id=&#34;environment-and-organism-representation&#34;&gt;Environment and Organism Representation&lt;/h2&gt;
+&lt;p&gt;The environment is basically a 2-dimensional grid where each cell in the grid can only hold one organism and organisms are represented with the &lt;strong&gt;Organism&lt;/strong&gt; struct that stores the colour and cell index for the organism i&amp;rsquo;m also keeping a map of each organism to it&amp;rsquo;s index, i thought having the Grid work with just indices instead of storing the organisms directly in the grid was better because it allowed for a nicer seperation of concerns and i felt that the Organism struct would only get more and more complex and i didn&amp;rsquo;t want a situation where i&amp;rsquo;d have to keep changing the grid implementation&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;State&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; grid: &lt;span style=&#34;color:#a6e22e&#34;&gt;Grid&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; organisms: &lt;span style=&#34;color:#a6e22e&#34;&gt;HashMap&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, Organism&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; ids: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug, Clone)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Organism&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; position: &lt;span style=&#34;color:#a6e22e&#34;&gt;CellIndex&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; color: &lt;span style=&#34;color:#a6e22e&#34;&gt;Color&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Grid&lt;/strong&gt; is a custom grid type i implemented to make stuff easier, I implemented display for it to make debugging a bit easier. I also added some utilities that i thought would be helpful.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug, Clone)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Grid&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; cells: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Cell&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; num_rows: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; num_cols: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Clone, Debug)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Cell&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; value: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; fmt::Display &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; Grid {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fmt&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, f: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mut&lt;/span&gt; fmt::Formatter&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&amp;#39;_&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fmt&lt;/span&gt;::Result {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; grid_display: String &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            .cells
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            .iter()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;x&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; row: String &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    .iter()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;cell&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; (cell.value).to_string() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    .collect();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                format!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{row}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            })
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            .collect();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        write!(f, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{grid_display}&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; Grid {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;new&lt;/span&gt;(row_size: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;, column_size: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Self&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;reset&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, index: &lt;span style=&#34;color:#a6e22e&#34;&gt;CellIndex&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Cell&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;set_cell&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, index: &lt;span style=&#34;color:#a6e22e&#34;&gt;CellIndex&lt;/span&gt;, id: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unset_cell&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, index: &lt;span style=&#34;color:#a6e22e&#34;&gt;CellIndex&lt;/span&gt;) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;set_cells&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, updates: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(CellIndex, &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unset_cells&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, cells: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;CellIndex&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;shape&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self) -&amp;gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is_set&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, index: &lt;span style=&#34;color:#a6e22e&#34;&gt;CellIndex&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;num_set&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;rendering&#34;&gt;Rendering&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m drawing everything for this on an SDL2 canvas, because i googled how to draw rectangles in sdl2 and that was what came up. I think there are other ways to do this, off the top of my head you could also use a texture, and i think that&amp;rsquo;s actually more performant because textures are stored and processed on the GPU. To make the drawing process a bit easier I made a nice Renderer struct to just abstract over the basic drawing functionalities you&amp;rsquo;d need. it takes a WindowCanvas and a point size variable which represents the size of individual points on the canvas(a point in the canvas corresponds to an organism so the point size just corresponds to the size of each organism on screen). In retrospect i wonder why i passed an owned WindowCanvas instead of a mutable reference, probably to avoid working with lifetimes. (I&amp;rsquo;m lazy like that).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Renderer&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; canvas: &lt;span style=&#34;color:#a6e22e&#34;&gt;WindowCanvas&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; point_size: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;new&lt;/span&gt;(window: &lt;span style=&#34;color:#a6e22e&#34;&gt;Window&lt;/span&gt;, point_size: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Self, String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;draw_dot&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, point: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;, color: &lt;span style=&#34;color:#a6e22e&#34;&gt;Color&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;draw_rect&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    point: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    width: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    height: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    color: &lt;span style=&#34;color:#a6e22e&#34;&gt;Color&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_size&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self) -&amp;gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clear&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;present&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self) {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_rect&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, rect_width: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, rect_height: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, x: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;, y: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Rect&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;render_text&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, text: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;, font: &lt;span style=&#34;color:#a6e22e&#34;&gt;Font&lt;/span&gt;, position: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By the way, rendering text on sdl2 is honestly really annoying to do(one of the reasons why i switched to using bevy), here&amp;rsquo;s the render_text function for context&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;render_text&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, text: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;, font: &lt;span style=&#34;color:#a6e22e&#34;&gt;Font&lt;/span&gt;, position: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; texture_creator &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self.canvas.texture_creator();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; surface &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; font
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .render(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;text)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .blended(Color::&lt;span style=&#34;color:#66d9ef&#34;&gt;RGBA&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .map_err(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.to_string())&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; texture &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; texture_creator
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .create_texture_from_surface(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;surface)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .map_err(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;e&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; e.to_string())&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; TextureQuery { width, height, &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt; } &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; texture.query();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// If the text is too big for the screen, downscale it (and center regardless)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; padding &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self.get_rect(width, height, position.x(), position.y());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    self.canvas.copy(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;texture, None, Some(target))&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Ok(());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What do you mean there&amp;rsquo;s no write function that just puts the text on the screen, are we in the stone ages ?&lt;/p&gt;
+&lt;p&gt;Anyways, I pass a reference to the &lt;strong&gt;Renderer&lt;/strong&gt; into &lt;strong&gt;State&lt;/strong&gt; like so.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;State&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;a&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; renderer: Option&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;a&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; Renderer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In Retrospect, I feel like I could have handled that a bit better because conceptually, the renderer isn&amp;rsquo;t really attached to the state in any meaningful way, it just feels like baggage on the type. I guess at the time it was probably the easiest thing to do
+something else i could have done is maybe pass the renderer as an argument to a draw function in the struct, something like this&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; State{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;draw&lt;/span&gt;(renderer: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mut&lt;/span&gt; Renderer)&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;weirdly enough i have a really similar function already implemented in the struct called display so i wonder why that didn&amp;rsquo;t come to mind.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; State{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;//check to see if renderer is attached
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; rng &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rand::thread_rng();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self.renderer {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Some(renderer) &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                renderer.clear();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; organism_entry &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; self.organisms.iter() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; (x, y) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; organism_entry.&lt;span style=&#34;color:#ae81ff&#34;&gt;1.&lt;/span&gt;position;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    renderer.draw_dot(Point::new(x &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;, y &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;), organism_entry.&lt;span style=&#34;color:#ae81ff&#34;&gt;1.&lt;/span&gt;color)&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                renderer.present();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Ok(())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            None &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; Err(String::from(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;renderer not attached&amp;#34;&lt;/span&gt;)),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clear_display&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;updated-running-loop&#34;&gt;Updated Running Loop&lt;/h2&gt;
+&lt;p&gt;I updated the running loop to re-render the organisms on each iteration like so&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;running&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;loop&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        environment.display()&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        sleep(Duration::from_millis(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I think i&amp;rsquo;ll stop here for now, don&amp;rsquo;t want to make this too long&lt;/p&gt;
+&lt;p&gt;Till next time.&lt;/p&gt;
+&lt;p&gt;Authors Note - I mixed up the rows and columns while i was writing this 😭, i need help&lt;/p&gt;
 </content>
     </item>
     
@@ -34,9 +223,7 @@
 &lt;h2 id=&#34;so-what-is-evo&#34;&gt;So&amp;hellip; What is Evo?&lt;/h2&gt;
 &lt;p&gt;Evo is a system that simulates natural selection. Well, what is natural selection? It&amp;rsquo;s basically a process where organisms better adapted to their environment tend to survive and reproduce, passing on favorable traits to their offspring. Over generations, this leads to the evolution of populations.&lt;br&gt;
 The point of Evo is to try to replicate this digitally, creating a small world where &amp;ldquo;digital organisms&amp;rdquo; evolve to adapt to their environment.&lt;/p&gt;
-&lt;p&gt;The neural network for each organism is encoded as a &amp;ldquo;genome,&amp;rdquo; which is just a string representation of the network’s structure and weights. Analogous to biology, the genome defines the organism&amp;rsquo;s behavior.&lt;/p&gt;
-&lt;p&gt;To simulate natural selection, you need organisms. The way we represent the organisms in this system is with a simple neural net.&lt;br&gt;
-If you haven&amp;rsquo;t heard of those, a neural net is a system inspired by the human brain. It consists of layers of interconnected nodes (neurons).&lt;/p&gt;
+&lt;p&gt;To simulate natural selection, you need organisms. The way we represent the organisms in this system is with a simple neural net. If you haven&amp;rsquo;t heard of those, a neural net is a system inspired by the human brain. It consists of layers of interconnected nodes (neurons).&lt;/p&gt;
 &lt;p&gt;To make organisms from neural nets, we implement them such that the input neurons take in information from the organism&amp;rsquo;s environment (basically its senses), and the output neurons cause the organism to perform an action.&lt;/p&gt;
 &lt;p&gt;A string representation of this neural net is called a genome (like in biology), and it completely represents the behavior patterns of the organism. To keep things analogous with biology, a gene in this system is just a connection between neurons in the neural net. This allows us to say that genomes are made of genes, just like we would in biological organisms. Also, because it&amp;rsquo;s not really practical to read through lines of genomes for the organisms in our simulation, we represent each genome as a color such that similar genomes (i.e., similar behavior) are represented with similar colors.&lt;/p&gt;
 &lt;p&gt;Now that we&amp;rsquo;re mostly up to speed with how the organisms would work, how would natural selection work in this system?&lt;/p&gt;
@@ -47,119 +234,6 @@ The organisms that don&amp;rsquo;t die get to reproduce sexually. The way this w
 &lt;p&gt;The hope with this experiment (well, it&amp;rsquo;s more of the expected result because I&amp;rsquo;ve seen it work already) is that by killing off the &amp;ldquo;unfit&amp;rdquo; organisms and allowing the more &amp;ldquo;fit&amp;rdquo; ones to reproduce, we create a pool of organisms whose genetics allow them to easily survive in the environment. And that is called&amp;hellip; &lt;em&gt;drumroll&lt;/em&gt;&amp;hellip; natural selection.&lt;/p&gt;
 &lt;h2 id=&#34;how-am-i-building-evo&#34;&gt;How am I building Evo?&lt;/h2&gt;
 &lt;p&gt;Well, I&amp;rsquo;m writing it completely in Rust. For the graphics, I initially started using SDL2 but then switched to Bevy (I&amp;rsquo;ll probably write more about why later). I&amp;rsquo;ll add more implementation details as I write more.&lt;/p&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Building Evo(a snake game interlude)</title>
-      <link>http://localhost:1313/posts/evo_snake_game/</link>
-      <pubDate>Sat, 26 Oct 2024 05:57:12 +0100</pubDate>
-      
-      <guid>http://localhost:1313/posts/evo_snake_game/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>Extracting Data Flow Representation from Control Flow Graph</title>
-      <link>http://localhost:1313/posts/data_flow/</link>
-      <pubDate>Sat, 26 Oct 2024 05:57:12 +0100</pubDate>
-      
-      <guid>http://localhost:1313/posts/data_flow/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>You Did This</title>
-      <link>http://localhost:1313/posts/youdidthis/</link>
-      <pubDate>Mon, 30 Jan 2023 10:57:12 +0100</pubDate>
-      
-      <guid>http://localhost:1313/posts/youdidthis/</guid>
-      <description>I wish I could remember like it was yesterday, all I really remember are flashes, flashes of the most horrible moments of my life.
-I&amp;rsquo;d just finished evening lessons and I had to go back home, it was the same old routine, I&amp;rsquo;d done this for about three years, pick my little sister and take the A11 bus back home .On the way back we&amp;rsquo;d meet Brad, he&amp;rsquo;s this guy from the prep school next to mine that I&amp;rsquo;ve been dating for a while.</description>
-      <content>&lt;p&gt;I wish I could remember like it was yesterday, all I really remember are flashes, flashes of the most horrible moments of my life.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;d just finished evening lessons and I had to go back home, it was the same old routine, I&amp;rsquo;d done this for about three years, pick my little sister and take the A11 bus back home .On the way back we&amp;rsquo;d meet Brad, he&amp;rsquo;s this guy from the prep school next to mine that I&amp;rsquo;ve been dating
-for a while.&lt;/p&gt;
-&lt;p&gt;He&amp;rsquo;s really nice and I enjoy talking with him. we&amp;rsquo;d get to the crossing and my sister would beg for me to let her cross the road alone because she was 9 now and a big girl and everyday I&amp;rsquo;d say
-&amp;ldquo;absolutely not&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;That day was different
-She does the weird cute eyes thing. I really love those tiny eyes. Brad joins her too. I look at the road and it seems pretty ok, what&amp;rsquo;s the worst that could happen.&lt;/p&gt;
-&lt;p&gt;I tell her she can go but to be careful and that it was a one-time thing, mom would kill me if she found out.&lt;/p&gt;
-&lt;p&gt;She darts across the road and I instantly realize what&amp;rsquo;s about to happen. I drop my bag and sprint after her, Brad runs after me.&lt;/p&gt;
-&lt;p&gt;I trip and fall
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-FLASH
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-I think I jammed my knee, I can&amp;rsquo;t get up, I hear the brakes on the truck screech and people around are screaming
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-FLASH
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-I think the truck just made impact. I hear the soft screeching of human flesh against the tarmac. She probably got caught under the bumper.&lt;/p&gt;
-&lt;p&gt;Brad runs toward the truck
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-FLASH
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-I see the blood trail her body leaves, I have to get up, I have to help her, she has to be ok, I try to pry myself up on my other leg but i fall again
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-FLASH
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-My head hits hard on the road, Brad is back at my side, what is he doing here, why isn&amp;rsquo;t he helping her. I lose consciousness as the effect of the hit starts to sink.&lt;/p&gt;
-&lt;p&gt;As I slip into the darkness I realize what had just happened, what I&amp;rsquo;d just done&lt;/p&gt;
-&lt;p&gt;I had killed my sister&lt;/p&gt;
-&lt;p&gt;I wake up on a hospital bed, I must have been out for a few hours. My mother is sitting next to me, her eyes are swollen red, she&amp;rsquo;s definetely
-been crying, she holds my hand and says&lt;/p&gt;
-&lt;p&gt;it&amp;rsquo;ll be ok. I already know the bad news. my sister was gone, she was gone forever, I&amp;rsquo;d never see her again
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-Except she was right there&lt;/p&gt;
-&lt;p&gt;standing at the foot of the bed, her clothes were ripped and bloodied from the road, and her left side had been completely mangled.&lt;/p&gt;
-&lt;p&gt;One arm had been completely severed, and her left eye socket was an
-empty, gaping hole. Her skin was covered in deep cuts and abrasions, and dried blood and grime filled the hollows of her face.&lt;/p&gt;
-&lt;p&gt;She looked at me with her one remaining eye, her face contorted in pain, and said the words that have echoed in my mind ever since: &amp;ldquo;You did this to me.&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s been 13 years since then, I&amp;rsquo;m 29 now and my sister still hasn&amp;rsquo;t left, she&amp;rsquo;s always there, standing across from me while I eat, taking the same cab rides as me, sitting on the road at the spot where she
-died each time saying the all too familiar words &amp;ldquo;you did this to me&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;I wonder why she still bothers with that. I definitely don&amp;rsquo;t need anyone to remind me.&lt;/p&gt;
-&lt;p&gt;I blame myself every day. I wish I&amp;rsquo;d gone instead of her, I wish I didn&amp;rsquo;t listen to Brad. That all doesn&amp;rsquo;t matter now does it?
-none of it matters anymore&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ve been to a few doctors since the incident and I&amp;rsquo;ve been diagnosed with a lot of things, PTSD&amp;rsquo;s at the top of the list, recently, I&amp;rsquo;ve been seeing this therapist who thinks we can work out my problems and that life can go back to &amp;ldquo;normal&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;I told her about how my sister keeps me company and she says it would be great if I took meds to help with my &amp;ldquo;hallucinations&amp;rdquo; because &amp;ldquo;getting rid of them is a very important thing for my healing
-process&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;The thing is, I don&amp;rsquo;t want to feel better, I dont want to forget, I need to remember every day, every second, what I did to her, how I killed her. I can never forget, I must never forget.&lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s 2:00am in the morning and it&amp;rsquo;s a little chilly, I&amp;rsquo;ve been talking to my sister pretty often for the past few days. She&amp;rsquo;s come up with the perfect plan to make me pay for my actions and today is the
-day we we&amp;rsquo;re doing it.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ve got my rope and the conveniently placed ceiling fan in my
-bedroom all ready to go – hanging, how cliche.&lt;/p&gt;
-&lt;p&gt;Turns out it&amp;rsquo;s actually one of the more painless ways to die, once you&amp;rsquo;ve gotten past all the choking.&lt;/p&gt;
-&lt;p&gt;I tighten the noose around my neck and the hook of the fan while my sister smiles behind me urging me on, I&amp;rsquo;m glad I can finally make her happy, glad I can finally atone for my sin. I signal to her that I&amp;rsquo;m ready, she nods and kicks the chair under me&lt;/p&gt;
-&lt;p&gt;I fall and well&amp;hellip;
-you know the rest&lt;/p&gt;
 </content>
     </item>
     

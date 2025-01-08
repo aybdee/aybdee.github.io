@@ -1,7 +1,7 @@
 +++
 title = "Building Evo Part 2"
 draft=true
-date = "2025-01-08T05:57:12+01:00"
+date = "2025-01-07T05:57:12+01:00"
 author = "abundance"
 authorTwitter = "aybdee" #do not include @
 cover = ""
@@ -74,7 +74,7 @@ I dont think there's too much to talk about here, i'm using the rust_sdl2 crate 
 
 
 ## Environment and Organism Representation
-The environment is basically a 2-dimensional grid where each cell in the grid can only hold one organism and organisms are represented with the **Organism** struct that stores the colour and cell index for the organism i'm also keeping a map of each organism to it's index, i thought having the Grid work with just indices instead of storing the organisms directly in the grid was better because it allowed for a nicer seperation of concerns and i felt that the Organism struct would only get more and more complex and i didn't want a situation where i'd have to keep changing the grid implementation
+The environment is basically a 2-dimensional grid where each cell in the grid can only hold one organism and organisms are represented with the **Organism** struct that stores the colour and cell index for the organism. I'm also keeping a map of each organism to it's index, I thought having the Grid work with just indices instead of storing the organisms directly in the grid was better because it allowed for a nicer seperation of concerns and I felt that the Organism struct would only get more and more complex. I didn't want a situation where i'd have to keep changing the grid implementation
 
 ```rust
 #[derive(Debug)]
@@ -191,8 +191,9 @@ pub fn render_text(&mut self, text: &str, font: Font, position: Point) -> Result
 }
 ```
 
-What do you mean there's no write function that just puts the text on the screen, are we in the stone ages ? 
-Anyways, I pass a reference .. **Renderer** to the **State** struct like so. 
+What do you mean there's no write function that just puts the text on the screen, are we in the stone ages ?
+
+Anyways, I pass a reference to the **Renderer** into **State** like so. 
 
 ```rust
 #[derive(Debug)]
@@ -252,7 +253,8 @@ pub fn main() -> Result<(), String> {
 ```
 
 I think i'll stop here for now, don't want to make this too long
+
 Till next time.
 
 
-Authors Note - I mixed up the rows and columns while i was writing this 😭, i need help
+Authors Note - I mixed up the rows and columns while i was writing this 😭, i need help.
