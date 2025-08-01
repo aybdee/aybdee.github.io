@@ -17,8 +17,11 @@
   gtag('config', 'G-E4TTEGH2X0');
 </script>
 
+
   
 <body class="{{- ( or .Params.color $.Site.Params.ThemeColor ) -}}">
+    
+<a rel="me" href="https://hachyderm.io/@aybdee" style="display:none;">Mastodon</a>
 {{ $container := cond ($.Site.Params.FullWidthTheme | default false) "container full" (cond ($.Site.Params.CenterTheme | default false) "container center" "container") }}
 
 <div class="{{- $container -}}{{- cond ($.Site.Params.oneHeadingSize | default true) " headings--one-size" "" }}">

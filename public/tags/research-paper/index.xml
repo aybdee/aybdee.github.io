@@ -13,11 +13,13 @@
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
       <guid>http://localhost:1313/scribbles/v16spotify/</guid>
-      <description>the initial model for candidate selection was WRMF(weight regularized matrix factorization)
-from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing
-basically matrix factorization as used in regular collaborative filtering problems
-where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions
-I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;.</description>
+      <description>&lt;p&gt;the initial model for candidate selection was WRMF(weight regularized matrix factorization)&lt;br&gt;
+from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing&lt;/p&gt;
+&lt;p&gt;basically matrix factorization as used in regular collaborative filtering problems&lt;/p&gt;
+&lt;p&gt;where the userxitem ie preferences/ratings or whatever floats your boat is factorized into user and item embeddings that can be used for subsequent predictions&lt;/p&gt;
+&lt;p&gt;I think the regularization employed here is just for more efficiently learning (something i think is pretty relevant in this case since we&amp;rsquo;ve got like 20k&amp;hellip;..)
+the creators of v16 link to a paper that more or less describes their specific approach to WRMF
+(Collaborative Filtering for Immediate Feedback Datasets)&lt;/p&gt;</description>
       <content>&lt;p&gt;the initial model for candidate selection was WRMF(weight regularized matrix factorization)&lt;br&gt;
 from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing&lt;/p&gt;
 &lt;p&gt;basically matrix factorization as used in regular collaborative filtering problems&lt;/p&gt;
