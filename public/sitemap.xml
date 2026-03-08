@@ -2,116 +2,116 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://aybdee.xyz/</loc>
     <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
+    <loc>https://aybdee.xyz/tags/c&#43;&#43;/</loc>
     <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/distributed-systems/</loc>
+    <loc>https://aybdee.xyz/tags/distributed-systems/</loc>
     <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/programming/lock_free_linked_list/</loc>
+    <loc>https://aybdee.xyz/programming/lock_free_linked_list/</loc>
     <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/programming/</loc>
+    <loc>https://aybdee.xyz/programming/</loc>
     <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://aybdee.xyz/tags/</loc>
     <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writing/first_death/</loc>
+    <loc>https://aybdee.xyz/writing/first_death/</loc>
     <lastmod>2025-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/writing/</loc>
+    <loc>https://aybdee.xyz/tags/writing/</loc>
     <lastmod>2025-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writing/</loc>
+    <loc>https://aybdee.xyz/writing/</loc>
     <lastmod>2025-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/programming/evo_part_2/</loc>
+    <loc>https://aybdee.xyz/programming/evo_part_2/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rust/</loc>
+    <loc>https://aybdee.xyz/tags/rust/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/sdl2/</loc>
+    <loc>https://aybdee.xyz/tags/sdl2/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/simulation/</loc>
+    <loc>https://aybdee.xyz/tags/simulation/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writing/to_feel/</loc>
+    <loc>https://aybdee.xyz/writing/to_feel/</loc>
     <lastmod>2024-11-05T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/programming/evo_part_1/</loc>
+    <loc>https://aybdee.xyz/programming/evo_part_1/</loc>
     <lastmod>2024-10-26T05:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/introspective/</loc>
+    <loc>https://aybdee.xyz/tags/introspective/</loc>
     <lastmod>2024-07-07T01:00:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/musings/</loc>
+    <loc>https://aybdee.xyz/musings/</loc>
     <lastmod>2024-07-07T01:00:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/musings/onthepastlittlewhile/</loc>
+    <loc>https://aybdee.xyz/musings/onthepastlittlewhile/</loc>
     <lastmod>2024-07-07T01:00:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/religion/</loc>
+    <loc>https://aybdee.xyz/tags/religion/</loc>
     <lastmod>2024-07-07T01:00:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/deep-learning/</loc>
+    <loc>https://aybdee.xyz/tags/deep-learning/</loc>
     <lastmod>2023-10-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gans/</loc>
+    <loc>https://aybdee.xyz/tags/gans/</loc>
     <lastmod>2023-10-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/machine-learning/</loc>
+    <loc>https://aybdee.xyz/tags/machine-learning/</loc>
     <lastmod>2023-10-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/scribbles/</loc>
+    <loc>https://aybdee.xyz/scribbles/</loc>
     <lastmod>2023-10-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/scribbles/gantalking/</loc>
+    <loc>https://aybdee.xyz/scribbles/gantalking/</loc>
     <lastmod>2023-10-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/scribbles/v16spotify/</loc>
+    <loc>https://aybdee.xyz/scribbles/v16spotify/</loc>
     <lastmod>2023-05-15T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/research-paper/</loc>
+    <loc>https://aybdee.xyz/tags/research-paper/</loc>
     <lastmod>2023-05-15T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/spotify/</loc>
+    <loc>https://aybdee.xyz/tags/spotify/</loc>
     <lastmod>2023-05-15T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bored/</loc>
+    <loc>https://aybdee.xyz/tags/bored/</loc>
     <lastmod>2023-01-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/story/</loc>
+    <loc>https://aybdee.xyz/tags/story/</loc>
     <lastmod>2023-01-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writing/youdidthis/</loc>
+    <loc>https://aybdee.xyz/writing/youdidthis/</loc>
     <lastmod>2023-01-30T10:57:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/musings/burnthefuture/</loc>
+    <loc>https://aybdee.xyz/musings/burnthefuture/</loc>
     <lastmod>2022-12-07T01:00:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/spective/</loc>
+    <loc>https://aybdee.xyz/tags/spective/</loc>
     <lastmod>2022-12-07T01:00:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/musings/drcow/</loc>
+    <loc>https://aybdee.xyz/musings/drcow/</loc>
     <lastmod>2022-10-03T12:46:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/pain/</loc>
+    <loc>https://aybdee.xyz/tags/pain/</loc>
     <lastmod>2022-10-03T12:46:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/poems/</loc>
+    <loc>https://aybdee.xyz/tags/poems/</loc>
     <lastmod>2022-10-03T12:46:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/randomstuff/</loc>
+    <loc>https://aybdee.xyz/tags/randomstuff/</loc>
     <lastmod>2022-10-03T12:46:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://aybdee.xyz/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://aybdee.xyz/categories/</loc>
   </url>
 </urlset>

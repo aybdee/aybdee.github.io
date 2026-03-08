@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>:)</title>
-    <link>http://localhost:1313/</link>
+    <link>https://aybdee.xyz/</link>
     <description>Recent content on :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Mar 2026 12:23:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Mar 2026 12:23:12 +0100</lastBuildDate><atom:link href="https://aybdee.xyz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hariss Lock Free Linked List</title>
-      <link>http://localhost:1313/programming/lock_free_linked_list/</link>
+      <link>https://aybdee.xyz/programming/lock_free_linked_list/</link>
       <pubDate>Sun, 08 Mar 2026 12:23:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/programming/lock_free_linked_list/</guid>
+      <guid>https://aybdee.xyz/programming/lock_free_linked_list/</guid>
       <description>&lt;p&gt;Intuitively, I&amp;rsquo;ve always understood lock-free algorithms/data structures to be an approach to multithreaded programming that doesn&amp;rsquo;t involve using &amp;ldquo;locks&amp;rdquo;. Locks here mean any general mechanism used to &amp;ldquo;protect&amp;rdquo; memory so that multiple threads don&amp;rsquo;t, for instance, write to it at the same time. This typically involves one thread acquiring and owning the lock, while other threads have to wait for the owning thread to &amp;ldquo;free&amp;rdquo; the lock, allowing them to eventually access the data.&lt;/p&gt;</description>
       <content>&lt;p&gt;Intuitively, I&amp;rsquo;ve always understood lock-free algorithms/data structures to be an approach to multithreaded programming that doesn&amp;rsquo;t involve using &amp;ldquo;locks&amp;rdquo;. Locks here mean any general mechanism used to &amp;ldquo;protect&amp;rdquo; memory so that multiple threads don&amp;rsquo;t, for instance, write to it at the same time. This typically involves one thread acquiring and owning the lock, while other threads have to wait for the owning thread to &amp;ldquo;free&amp;rdquo; the lock, allowing them to eventually access the data.&lt;/p&gt;
 &lt;p&gt;The issue with lock-based data structures though is that sometimes a thread can fail without &amp;ldquo;releasing&amp;rdquo; the lock, and so other threads that are waiting for the lock so they can access some memory are stuck and can&amp;rsquo;t do anything. This brings us to the canonical definition of lock-free data structures/algorithms.&lt;/p&gt;
@@ -206,10 +206,10 @@ Thread A: performs CAS on Node(3).next
     
     <item>
       <title>First Death</title>
-      <link>http://localhost:1313/writing/first_death/</link>
+      <link>https://aybdee.xyz/writing/first_death/</link>
       <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/writing/first_death/</guid>
+      <guid>https://aybdee.xyz/writing/first_death/</guid>
       <description>&lt;p&gt;Brothers and sisters, the testimony and first death of Ade.&lt;/p&gt;
 &lt;p&gt;When I came here, I had no future, no purpose no plans, nothing. I was a walking husk. That is until i met our Lord. He took this empty worthless life and gave it purpose, I now know that my essence is to service him, to dedicate my very being to his magnificence and grace. In that, I have meaning.In that I am complete.&lt;/p&gt;</description>
       <content>&lt;p&gt;Brothers and sisters, the testimony and first death of Ade.&lt;/p&gt;
@@ -258,10 +258,10 @@ I’m going back in.&lt;/p&gt;
     
     <item>
       <title>Building Evo Part 2</title>
-      <link>http://localhost:1313/programming/evo_part_2/</link>
+      <link>https://aybdee.xyz/programming/evo_part_2/</link>
       <pubDate>Tue, 07 Jan 2025 05:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/programming/evo_part_2/</guid>
+      <guid>https://aybdee.xyz/programming/evo_part_2/</guid>
       <description>&lt;p&gt;On todays&amp;rsquo; episode of building evo, i&amp;rsquo;m going over the basic sdl2 implementation, Hopefully you&amp;rsquo;ve read the first &lt;a href=&#34;https://aybdee.xyz/posts/evo_part_1/&#34;&gt;post&lt;/a&gt; and you know what evo is, and you also know that i moved from using sdl2 to bevy. This post is just going over what i was able to do before switching because i think that might be interesting to read.&lt;/p&gt;
 &lt;p&gt;That said, I didn&amp;rsquo;t really go far with using sdl2. I implemented basic graphics and a view for the organisms, organism tracking within the environment, and wall stacking (ONLY for organisms going in the same direction). Getting organisms to stack on walls was a real pain, it took more than a month(including procrastination time) to figure out, or maybe it&amp;rsquo;s a skill issue.&lt;/p&gt;</description>
       <content>&lt;p&gt;On todays&amp;rsquo; episode of building evo, i&amp;rsquo;m going over the basic sdl2 implementation, Hopefully you&amp;rsquo;ve read the first &lt;a href=&#34;https://aybdee.xyz/posts/evo_part_1/&#34;&gt;post&lt;/a&gt; and you know what evo is, and you also know that i moved from using sdl2 to bevy. This post is just going over what i was able to do before switching because i think that might be interesting to read.&lt;/p&gt;
@@ -463,10 +463,10 @@ something else i could have done is maybe pass the renderer as an argument to a 
     
     <item>
       <title>To Feel</title>
-      <link>http://localhost:1313/writing/to_feel/</link>
+      <link>https://aybdee.xyz/writing/to_feel/</link>
       <pubDate>Tue, 05 Nov 2024 05:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/writing/to_feel/</guid>
+      <guid>https://aybdee.xyz/writing/to_feel/</guid>
       <description>&lt;p&gt;When it first got out that I cut myself, the question I got asked the most was why. My parents, my friends—none of them could understand it. Why would you do something that physically harmed you over and over? Didn’t you feel the pain? Well, of course it hurts. That’s why I do it. I do it because sometimes it seems like pain is the only way I can feel anything.&lt;/p&gt;</description>
       <content>&lt;p&gt;When it first got out that I cut myself, the question I got asked the most was why. My parents, my friends—none of them could understand it. Why would you do something that physically harmed you over and over? Didn’t you feel the pain? Well, of course it hurts. That’s why I do it. I do it because sometimes it seems like pain is the only way I can feel anything.&lt;/p&gt;
 &lt;p&gt;What is feeling anyway? It’s this random thing that we take for granted. We all just feel feelings, and that’s that. Happy, angry, bored. The feelings we feel are what make life worth living. We experience a lot of things in life, but it&amp;rsquo;s usually the emotions attached to those things that we remember most.&lt;/p&gt;
@@ -479,10 +479,10 @@ something else i could have done is maybe pass the renderer as an argument to a 
     
     <item>
       <title>Building Evo Part 1</title>
-      <link>http://localhost:1313/programming/evo_part_1/</link>
+      <link>https://aybdee.xyz/programming/evo_part_1/</link>
       <pubDate>Sat, 26 Oct 2024 05:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/programming/evo_part_1/</guid>
+      <guid>https://aybdee.xyz/programming/evo_part_1/</guid>
       <description>&lt;p&gt;A few months ago, I saw this really cool &lt;a href=&#34;https://www.youtube.com/watch?v=N3tRFayqVtk&amp;amp;t=1366s&#34;&gt;YouTube video&lt;/a&gt; demonstrating a simulation of evolution through natural selection, and it blew my mind. As such, I thought it&amp;rsquo;d be a good idea to try and recreate the system, and here we are. It&amp;rsquo;s been quite a while since I decided to do this, and there have been a lot of weird hitches and changes. But I eventually reached a decent point in the project and thought it&amp;rsquo;d be a good idea to write about it.&lt;/p&gt;</description>
       <content>&lt;p&gt;A few months ago, I saw this really cool &lt;a href=&#34;https://www.youtube.com/watch?v=N3tRFayqVtk&amp;amp;t=1366s&#34;&gt;YouTube video&lt;/a&gt; demonstrating a simulation of evolution through natural selection, and it blew my mind. As such, I thought it&amp;rsquo;d be a good idea to try and recreate the system, and here we are. It&amp;rsquo;s been quite a while since I decided to do this, and there have been a lot of weird hitches and changes. But I eventually reached a decent point in the project and thought it&amp;rsquo;d be a good idea to write about it.&lt;/p&gt;
 &lt;h2 id=&#34;so-what-is-evo&#34;&gt;So&amp;hellip; What is Evo?&lt;/h2&gt;
@@ -504,10 +504,10 @@ The organisms that don&amp;rsquo;t die get to reproduce sexually. The way this w
     
     <item>
       <title>On the Past Little while</title>
-      <link>http://localhost:1313/musings/onthepastlittlewhile/</link>
+      <link>https://aybdee.xyz/musings/onthepastlittlewhile/</link>
       <pubDate>Sun, 07 Jul 2024 01:00:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/musings/onthepastlittlewhile/</guid>
+      <guid>https://aybdee.xyz/musings/onthepastlittlewhile/</guid>
       <description>&lt;p&gt;The spiritual controls the physical. That&amp;rsquo;s how I, like many others around me, have been brought up to live my life—to see everything through the lens of spirituality. Whether you succeeded or failed, your emotions, whether your life was worth anything, whether you got to live the next second or die right now, all of it was determined by your relationship with God. He was the key, the only thing that mattered. He had all the answers, and all you needed to do was just love and serve Him.&lt;/p&gt;</description>
       <content>&lt;p&gt;The spiritual controls the physical. That&amp;rsquo;s how I, like many others around me, have been brought up to live my life—to see everything through the lens of spirituality. Whether you succeeded or failed, your emotions, whether your life was worth anything, whether you got to live the next second or die right now, all of it was determined by your relationship with God. He was the key, the only thing that mattered. He had all the answers, and all you needed to do was just love and serve Him.&lt;/p&gt;
 &lt;p&gt;For a while now, I&amp;rsquo;ve been moving away from all that. In some ways, maybe I was never really fully in it to begin with. It&amp;rsquo;s left me with a lot on my mind&lt;/p&gt;
@@ -520,10 +520,10 @@ The organisms that don&amp;rsquo;t die get to reproduce sexually. The way this w
     
     <item>
       <title>Talking about GANS</title>
-      <link>http://localhost:1313/scribbles/gantalking/</link>
+      <link>https://aybdee.xyz/scribbles/gantalking/</link>
       <pubDate>Mon, 30 Oct 2023 10:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/scribbles/gantalking/</guid>
+      <guid>https://aybdee.xyz/scribbles/gantalking/</guid>
       <description>&lt;p&gt;think of an intro
 (something about how you haven&amp;rsquo;t done serious ML in a while and you decided to blitz through some GAN papers - maybe talk about how you want to colour manga using GANS (link to the paper) and how the paper didn&amp;rsquo;t make any sense at first)&lt;/p&gt;
 &lt;p&gt;Before talking about GANS i think it&amp;rsquo;d be cool to talk about how computer scientists frame the problem of generating (data?)&lt;/p&gt;</description>
@@ -552,10 +552,10 @@ is take the data points with a high probability in the distribution&lt;/p&gt;
     
     <item>
       <title>Replicating v16 spotify recommendation system</title>
-      <link>http://localhost:1313/scribbles/v16spotify/</link>
+      <link>https://aybdee.xyz/scribbles/v16spotify/</link>
       <pubDate>Mon, 15 May 2023 10:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/scribbles/v16spotify/</guid>
+      <guid>https://aybdee.xyz/scribbles/v16spotify/</guid>
       <description>&lt;p&gt;the initial model for candidate selection was WRMF(weight regularized matrix factorization)&lt;br&gt;
 from the name its pretty easy to assume what it&amp;rsquo;s supposed to be doing&lt;/p&gt;
 &lt;p&gt;basically matrix factorization as used in regular collaborative filtering problems&lt;/p&gt;
@@ -594,10 +594,10 @@ competition with other items, and repeat feedback(not quite sure what this is))&
     
     <item>
       <title>You Did This</title>
-      <link>http://localhost:1313/writing/youdidthis/</link>
+      <link>https://aybdee.xyz/writing/youdidthis/</link>
       <pubDate>Mon, 30 Jan 2023 10:57:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/writing/youdidthis/</guid>
+      <guid>https://aybdee.xyz/writing/youdidthis/</guid>
       <description>&lt;p&gt;I wish I could remember like it was yesterday, all I really remember are flashes, flashes of the most horrible moments of my life.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;d just finished evening lessons and I had to go back home, it was the same old routine, I&amp;rsquo;d done this for about three years, pick my little sister and take the A11 bus back home .On the way back we&amp;rsquo;d meet Brad, he&amp;rsquo;s this guy from the prep school next to mine that I&amp;rsquo;ve been dating
 for a while.&lt;/p&gt;</description>
@@ -688,10 +688,10 @@ you know the rest&lt;/p&gt;
     
     <item>
       <title>Burn The Future I</title>
-      <link>http://localhost:1313/musings/burnthefuture/</link>
+      <link>https://aybdee.xyz/musings/burnthefuture/</link>
       <pubDate>Wed, 07 Dec 2022 01:00:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/musings/burnthefuture/</guid>
+      <guid>https://aybdee.xyz/musings/burnthefuture/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s pretty late, and I&amp;rsquo;m typing on my old tactile switch keyboard while thinking (well, I&amp;rsquo;ve been thinking) about my future. I feel like my perspective on my ideal future has changed a lot since I started school (which is crazy, considering it has only been a bit more than two years).&lt;/p&gt;
 &lt;p&gt;What I first pictured for myself was the life of a successful entrepreneur with lots of control, money, and influence. All I needed to do was to be extremely good at what I do (which happens to be programming), get a really great job first, and then build a startup that blows up, makes me a lot of money, becomes a big business, and gives me influence. I could do the things I want with maximum freedom and live my life without monetary limits, and so on. I didn&amp;rsquo;t really choose to run a business because it had any specific appeal to me; I mostly chose it because it seemed like the most surefire way to achieve the goals I had in mind.&lt;/p&gt;</description>
       <content>&lt;p&gt;It&amp;rsquo;s pretty late, and I&amp;rsquo;m typing on my old tactile switch keyboard while thinking (well, I&amp;rsquo;ve been thinking) about my future. I feel like my perspective on my ideal future has changed a lot since I started school (which is crazy, considering it has only been a bit more than two years).&lt;/p&gt;
@@ -708,10 +708,10 @@ you know the rest&lt;/p&gt;
     
     <item>
       <title>Dr Cow</title>
-      <link>http://localhost:1313/musings/drcow/</link>
+      <link>https://aybdee.xyz/musings/drcow/</link>
       <pubDate>Mon, 03 Oct 2022 12:46:12 +0100</pubDate>
       
-      <guid>http://localhost:1313/musings/drcow/</guid>
+      <guid>https://aybdee.xyz/musings/drcow/</guid>
       <description>&lt;p&gt;If only I wasn’t in this class&lt;br&gt;
 I’d be out on the streets making cash&lt;br&gt;
 I’d go on trips above and beyond&lt;br&gt;
@@ -749,10 +749,10 @@ Final words for my least favorite teacher Dr Cow&lt;/p&gt;
     
     <item>
       <title>About me (Circa 2022)</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://aybdee.xyz/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/about/</guid>
+      <guid>https://aybdee.xyz/about/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m Abundance, I&amp;rsquo;m a random person (aren&amp;rsquo;t we all) &lt;br&gt;
 //say something cool about being a programmer&lt;br&gt;
 I like knowing stuff and talking about it&lt;br&gt;
