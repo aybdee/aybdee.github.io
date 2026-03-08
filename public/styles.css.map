@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "styles.css",
-	"sourceRoot": "/home/abundance/random_projects/aybdee.github.io",
+	"sourceRoot": "/Users/aybdee/Projects/aybdee.github.io",
 	"sources": [
 		"css/base.scss",
 		"themes/terminal/assets/css/variables.scss",

@@ -5,7 +5,7 @@
     <link>http://localhost:1313/tags/spotify/</link>
     <description>Recent content in Spotify on :)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Mon, 15 May 2023 10:57:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/spotify/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Replicating v16 spotify recommendation system</title>

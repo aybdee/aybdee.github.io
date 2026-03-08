@@ -5,8 +5,205 @@
     <link>http://localhost:1313/</link>
     <description>Recent content on :)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Mar 2026 12:23:12 +0100</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hariss Lock Free Linked List</title>
+      <link>http://localhost:1313/programming/lock_free_linked_list/</link>
+      <pubDate>Sun, 08 Mar 2026 12:23:12 +0100</pubDate>
+      
+      <guid>http://localhost:1313/programming/lock_free_linked_list/</guid>
+      <description>&lt;p&gt;Intuitively, I&amp;rsquo;ve always understood lock-free algorithms/data structures to be an approach to multithreaded programming that doesn&amp;rsquo;t involve using &amp;ldquo;locks&amp;rdquo;. Locks here mean any general mechanism used to &amp;ldquo;protect&amp;rdquo; memory so that multiple threads don&amp;rsquo;t, for instance, write to it at the same time. This typically involves one thread acquiring and owning the lock, while other threads have to wait for the owning thread to &amp;ldquo;free&amp;rdquo; the lock, allowing them to eventually access the data.&lt;/p&gt;</description>
+      <content>&lt;p&gt;Intuitively, I&amp;rsquo;ve always understood lock-free algorithms/data structures to be an approach to multithreaded programming that doesn&amp;rsquo;t involve using &amp;ldquo;locks&amp;rdquo;. Locks here mean any general mechanism used to &amp;ldquo;protect&amp;rdquo; memory so that multiple threads don&amp;rsquo;t, for instance, write to it at the same time. This typically involves one thread acquiring and owning the lock, while other threads have to wait for the owning thread to &amp;ldquo;free&amp;rdquo; the lock, allowing them to eventually access the data.&lt;/p&gt;
+&lt;p&gt;The issue with lock-based data structures though is that sometimes a thread can fail without &amp;ldquo;releasing&amp;rdquo; the lock, and so other threads that are waiting for the lock so they can access some memory are stuck and can&amp;rsquo;t do anything. This brings us to the canonical definition of lock-free data structures/algorithms.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;lock-free algorithm&lt;/strong&gt; guarantees that &lt;strong&gt;at least one thread always makes progress&lt;/strong&gt;, regardless of what happens to the others. In other words, even if some threads are delayed, suspended, or crash entirely, the system as a whole will continue to move forward.&lt;/p&gt;
+&lt;p&gt;In practice, achieving this means carefully orchestrating the procedures so that operations performed by different threads don&amp;rsquo;t require exclusive ownership of shared data. Instead, updates are structured in such a way that threads can &lt;strong&gt;optimistically read state, attempt to update it, and retry if the state changed underneath them&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We usually achieve this with &lt;strong&gt;atomic operations&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Because it&amp;rsquo;s notoriously difficult to come up with lock-free algorithms in the general sense, what we typically have in practice are &lt;strong&gt;lock-free data structures&lt;/strong&gt; built around a small number of atomic primitives.&lt;/p&gt;
+&lt;p&gt;The most important primitive for many lock-free algorithms is &lt;strong&gt;Compare-And-Swap (CAS)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;CAS takes three arguments:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a memory location&lt;/li&gt;
+&lt;li&gt;an expected value&lt;/li&gt;
+&lt;li&gt;a new value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It atomically checks whether the memory location still contains the expected value, and if it does, replaces it with the new value. If the value has changed in the meantime, the operation fails and returns false This entire operation happens &lt;strong&gt;atomically at the hardware level&lt;/strong&gt;, meaning no other thread can observe a partially completed update.&lt;/p&gt;
+&lt;h1 id=&#34;harris-style-linked-list&#34;&gt;Harris Style Linked List&lt;/h1&gt;
+&lt;p&gt;The Harris style linked list [1] mainly has 3 operations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;insert&lt;/li&gt;
+&lt;li&gt;delete&lt;/li&gt;
+&lt;li&gt;search&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The insertion and deletion are mostly self explanatory, and the search operation is used internally to locate where an operation should occur.&lt;/p&gt;
+&lt;h3 id=&#34;constraints&#34;&gt;Constraints&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s an &lt;strong&gt;ordered set&lt;/strong&gt; (elements are unique and are inserted in descending order).&lt;/li&gt;
+&lt;li&gt;The operations are &lt;strong&gt;linearizable&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What linearizability means is essentially that for some sequence of operations that are carried out in parallel, there exists &lt;strong&gt;some linear ordering of those operations that would produce the same final result&lt;/strong&gt;. From the perspective of an outside observer, it looks as if the operations happened one after another, even though they were actually happening concurrently.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;searching&#34;&gt;Searching&lt;/h1&gt;
+&lt;p&gt;The search operation walks the list until it finds the correct position for a key.&lt;/p&gt;
+&lt;p&gt;Conceptually it returns two pointers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pred&lt;/strong&gt; — the node immediately before the position of interest&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;curr&lt;/strong&gt; — the node at that position&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;searchResult&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;pred;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;curr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So if we are searching for &lt;code&gt;5&lt;/code&gt; in:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;1 -&amp;gt; 3 -&amp;gt; 7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The search result would be:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pred = 3
+curr = 7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This pair of nodes represents the &lt;strong&gt;window&lt;/strong&gt; where an insertion or deletion might occur.&lt;/p&gt;
+&lt;p&gt;During traversal, the search routine also skips over nodes that have been &lt;strong&gt;logically deleted&lt;/strong&gt;(i&amp;rsquo;ll get to what this means later), and may help physically remove them.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; searchResult &lt;span style=&#34;color:#a6e22e&#34;&gt;search&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; key, Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;left) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;pred &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; left;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (true) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;curr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Node&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;get_unmarked(pred&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next.load());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (curr &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;curr_next &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; curr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next.load();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (Node&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;is_marked(curr_next)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;expected &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; curr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; success &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pred&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next.compare_exchange_strong(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              expected, Node&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;get_unmarked(curr_next));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (success) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            curr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Node&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;get_unmarked(curr_next);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; LinkedList&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;search(key, left);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (curr &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; searchResult{pred, curr};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (pred&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;key &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; key &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; curr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;key &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; key) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; searchResult{pred, curr};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        pred &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; curr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;insertion&#34;&gt;Insertion&lt;/h1&gt;
+&lt;p&gt;To Insert, first we do a search, and this gives us two pointers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;one to the item before the insertion point (&lt;code&gt;pred&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;one to the item after it (&lt;code&gt;curr&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We then perform one CAS on the &lt;code&gt;pred&lt;/code&gt; node, modifying its &lt;code&gt;next&lt;/code&gt; pointer to point to a new node whose &lt;code&gt;next&lt;/code&gt; pointer is &lt;code&gt;curr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We retry this CAS until it works.&lt;/p&gt;
+&lt;p&gt;Since a lot of the lock-free linked list implementation involves retrying CAS operations, I made a small template helper function to deal with it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt; Func&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; retry_until_success(Func &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;func) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;func()) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And so the insert operation looks something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;insert&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; key) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;head &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;new_node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Node(key, &lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;head &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; new_node;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    retry_until_success([&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;]() &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;auto&lt;/span&gt; searchResult &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; search(key, &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;head);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;insertion_point &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; searchResult.pred;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;new_node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Node(key, searchResult.curr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;expected &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; searchResult.curr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; insertion_point&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next.compare_exchange_strong(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        expected,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        new_node
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    });
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A very important detail here is that when we&amp;rsquo;re doing the CAS we need to &lt;strong&gt;recompute all the values used in the CAS operation&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;In this case that means &lt;strong&gt;calling &lt;code&gt;search()&lt;/code&gt; again each time before we try&lt;/strong&gt;.
+We need to do this is because when a CAS fails it is usually because some assumption we made about the data structure no longer holds (for example the node we&amp;rsquo;re trying to attach to might have been deleted or another node was inserted). Recomputing the values gives us an updated view of the structure before retrying.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;deletion&#34;&gt;Deletion&lt;/h1&gt;
+&lt;p&gt;The Harris style linked list performs deletion in &lt;strong&gt;two phases&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Logical deletion — marking the node as deleted&lt;/li&gt;
+&lt;li&gt;Physical deletion — actually unlinking the node from the list by updating it&amp;rsquo;s predecessors &lt;code&gt;next&lt;/code&gt; pointer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We separate these steps because there&amp;rsquo;s a chance some other thread might still be using the node while we&amp;rsquo;re attempting to delete it, so we can&amp;rsquo;t safely free the memory immediately.&lt;/p&gt;
+&lt;p&gt;To actually find the node to delete we&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;do a search (this time the &lt;code&gt;curr&lt;/code&gt; Node is the node we want to delete)&lt;/li&gt;
+&lt;li&gt;perform a &lt;code&gt;CAS&lt;/code&gt; to mark the &lt;code&gt;curr&lt;/code&gt; Node as deleted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; key) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    retry_until_success([&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;]() &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;auto&lt;/span&gt; searchResult &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; search(key, &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;head);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (searchResult.curr &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; searchResult.curr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;key &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; key) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; true;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      Node &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;expected &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; searchResult.curr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; searchResult.curr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next.compare_exchange_strong(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          expected, Node&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;get_marked(expected));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    });
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;marking-nodes-as-deleted&#34;&gt;Marking nodes as deleted&lt;/h2&gt;
+&lt;p&gt;The first idea I had to mark a deleted node was to just do something like this (I was mostly using the Harris paper as a loose guideline at this point):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Node&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; key;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; deleted;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  atomic&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Node &lt;span style=&#34;color:#f92672&#34;&gt;*&amp;gt;&lt;/span&gt; next;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Maybe you&amp;rsquo;re super smart and already see the pitfall with this approach (it took me a bit).&lt;/p&gt;
+&lt;p&gt;The issue becomes clear when you consider what happens when two different threads try to &lt;strong&gt;insert into and delete the same node concurrently&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Consider a list:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;1 -&amp;gt; 3 -&amp;gt; 7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Thread A wants to insert &lt;code&gt;5&lt;/code&gt;.&lt;br&gt;
+It would do this by modifying the &lt;code&gt;next&lt;/code&gt; pointer of &lt;code&gt;3&lt;/code&gt; to point to a new node &lt;code&gt;5&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Thread B wants to delete node &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Execution might look like this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Thread A: performs search → gets pointer to Node(3)
+Thread B: marks Node(3) as deleted
+Thread A: performs CAS on Node(3).next
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Thread A executes:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CAS(Node(3).next, expected=Node(7), new=Node(5))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The CAS &lt;strong&gt;succeeds&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;But this is wrong. we just inserted a node after a node that has already been deleted.&lt;/p&gt;
+&lt;p&gt;The problem is that B marked the node as deleted &lt;strong&gt;after A had already read it&lt;/strong&gt;, and there is no way for A to observe that change because the CAS only checks the &lt;code&gt;next&lt;/code&gt; pointer.&lt;/p&gt;
+&lt;p&gt;Reloading the node doesn&amp;rsquo;t really solve the problem either, because the change we care about lives &lt;strong&gt;outside the memory location we&amp;rsquo;re doing CAS on&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The only reliable way to propagate this information is to move the deletion marker &lt;strong&gt;into the same field we&amp;rsquo;re performing the CAS on&lt;/strong&gt;. That way, if it changes at any moment before our CAS executes, the CAS will fail and we&amp;rsquo;ll retry with a fresh state.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pointer-marking&#34;&gt;Pointer Marking&lt;/h2&gt;
+&lt;p&gt;The way the Harris implementation achieves this is by &lt;strong&gt;using the least significant bit (LSB) of the &lt;code&gt;next&lt;/code&gt; pointer&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;When we want to logically delete a node, we mark it by setting the LSB of its &lt;code&gt;next&lt;/code&gt; pointer to &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;So to delete &lt;code&gt;Node(3)&lt;/code&gt; we would change:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;3 -&amp;gt; 7
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;into&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;3 -&amp;gt; (7 | mark)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This indicates that the node is logically deleted.&lt;/p&gt;
+&lt;p&gt;My first concern when I read this solution was:&lt;br&gt;
+&lt;strong&gt;what if the next pointer already has its LSB set to 1?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;But this can&amp;rsquo;t happen (at least on typical architectures like x86) because heap allocations are aligned to at least 8 or 16 bytes sso the least significant bit will always be zero.&lt;/p&gt;
+&lt;p&gt;This allows us to turn the pointer:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0x...1000
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0x...1001
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;to indicate &amp;ldquo;marked&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Whenever we read the pointer we can just &lt;strong&gt;mask out the bit&lt;/strong&gt; to recover the real address.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;other-stuff&#34;&gt;Other Stuff&lt;/h2&gt;
+&lt;p&gt;Something important I didn&amp;rsquo;t talk about in this post is memory reclamation. We can&amp;rsquo;t just call free after physically unlinking a node because some other thread could still be using it. To reclaim memory safely, we need a strategy that ensures no thread holds a reference to the node anymore before freeing it. Common approaches include hazard pointers, epoch-based reclamation, or RCU-style reclamation, which basically track which nodes are still “in use” and only free them once it&amp;rsquo;s safe.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Harris, T. L. (2001). A pragmatic implementation of non‑blocking linked‑lists. In Proceedings of the 15th International Symposium on Distributed Computing (DISC) (pp. 300–314). Springer‑Verlag&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
     <item>
       <title>First Death</title>
       <link>http://localhost:1313/writing/first_death/</link>
@@ -71,7 +268,7 @@ I’m going back in.&lt;/p&gt;
 &lt;p&gt;That said, I didn&amp;rsquo;t really go far with using sdl2. I implemented basic graphics and a view for the organisms, organism tracking within the environment, and wall stacking (ONLY for organisms going in the same direction). Getting organisms to stack on walls was a real pain, it took more than a month(including procrastination time) to figure out, or maybe it&amp;rsquo;s a skill issue.&lt;/p&gt;
 &lt;h2 id=&#34;basic-setup&#34;&gt;Basic Setup&lt;/h2&gt;
 &lt;p&gt;First thing to look at is my window and running loop setup, if you&amp;rsquo;re not really familiar with using sdl2 and this doesn&amp;rsquo;t really make sense, you can look at &lt;a href=&#34;https://wiki.libsdl.org/SDL2/Tutorials&#34;&gt;this&lt;/a&gt;. It&amp;rsquo;s a really nice resource that can hopefully help.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::thread::sleep;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::thread::sleep;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::time::Duration;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; graphics::Renderer;
@@ -81,8 +278,8 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; sdl2::rect::Point;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_WIDTH&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;800&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;//num columns(x)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_HEIGHT&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;600&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;//num rows(y)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FPS&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u64&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SCREEN_HEIGHT&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;600&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;//num rows(y)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FPS&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u64&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; sdl_context &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdl2::init()&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
@@ -118,7 +315,7 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I dont think there&amp;rsquo;s too much to talk about here, i&amp;rsquo;m using the rust_sdl2 crate with the opengl backend for rendering. I setup some constants for the whole rendering process. Also, I kept mixing up the rows,columns and x-y coordinates throughout the code(I think i&amp;rsquo;m window dyslexic). So I had to literally comment &amp;ldquo;WIDTH means number of columns that means x&amp;rdquo; so i wouldn&amp;rsquo;t forget. for now the running loop is just sleeping till you press the escape key then it quits. One weird thing i randomly noticed though is that if you dont put a sleep in the running loop then it crashes instead of closing, this probably happens because we&amp;rsquo;re not giving sdl2 enough time to process events properly(i&amp;rsquo;m just speculating, couldn&amp;rsquo;t really find any resources on this)&lt;/p&gt;
 &lt;h2 id=&#34;environment-and-organism-representation&#34;&gt;Environment and Organism Representation&lt;/h2&gt;
 &lt;p&gt;The environment is basically a 2-dimensional grid where each cell in the grid can only hold one organism and organisms are represented with the &lt;strong&gt;Organism&lt;/strong&gt; struct that stores the colour and cell index for the organism. I&amp;rsquo;m also keeping a map of each organism to it&amp;rsquo;s index, I thought having the Grid work with just indices instead of storing the organisms directly in the grid was better because it allowed for a nicer seperation of concerns and I felt that the Organism struct would only get more and more complex. I didn&amp;rsquo;t want a situation where i&amp;rsquo;d have to keep changing the grid implementation&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug)]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug)]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;State&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; grid: &lt;span style=&#34;color:#a6e22e&#34;&gt;Grid&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; organisms: &lt;span style=&#34;color:#a6e22e&#34;&gt;HashMap&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, Organism&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;,
@@ -131,7 +328,7 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; color: &lt;span style=&#34;color:#a6e22e&#34;&gt;Color&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Grid&lt;/strong&gt; is a custom grid type i implemented to make stuff easier, I implemented display for it to make debugging a bit easier. I also added some utilities that i thought would be helpful.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug, Clone)]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug, Clone)]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Grid&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; cells: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Cell&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; num_rows: &lt;span style=&#34;color:#66d9ef&#34;&gt;usize&lt;/span&gt;,
@@ -153,10 +350,10 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    .iter()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;cell&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; (cell.value).to_string() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    .collect();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                format!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{row}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#a6e22e&#34;&gt;format!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{row}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            })
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            .collect();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        write!(f, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{grid_display}&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;write!&lt;/span&gt;(f, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{grid_display}&amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -174,7 +371,7 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;rendering&#34;&gt;Rendering&lt;/h2&gt;
 &lt;p&gt;I&amp;rsquo;m drawing everything for this on an SDL2 canvas, because i googled how to draw rectangles in sdl2 and that was what came up. I think there are other ways to do this, off the top of my head you could also use a texture, and i think that&amp;rsquo;s actually more performant because textures are stored and processed on the GPU. To make the drawing process a bit easier I made a nice Renderer struct to just abstract over the basic drawing functionalities you&amp;rsquo;d need. it takes a WindowCanvas and a point size variable which represents the size of individual points on the canvas(a point in the canvas corresponds to an organism so the point size just corresponds to the size of each organism on screen). In retrospect i wonder why i passed an owned WindowCanvas instead of a mutable reference, probably to avoid working with lifetimes. (I&amp;rsquo;m lazy like that).&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Renderer&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Renderer&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; canvas: &lt;span style=&#34;color:#a6e22e&#34;&gt;WindowCanvas&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; point_size: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
@@ -194,7 +391,7 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_rect&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;self, rect_width: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, rect_height: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;, x: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;, y: &lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Rect&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;render_text&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, text: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;, font: &lt;span style=&#34;color:#a6e22e&#34;&gt;Font&lt;/span&gt;, position: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By the way, rendering text on sdl2 is honestly really annoying to do(one of the reasons why i switched to using bevy), here&amp;rsquo;s the render_text function for context&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;render_text&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, text: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;, font: &lt;span style=&#34;color:#a6e22e&#34;&gt;Font&lt;/span&gt;, position: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;render_text&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self, text: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;str&lt;/span&gt;, font: &lt;span style=&#34;color:#a6e22e&#34;&gt;Font&lt;/span&gt;, position: &lt;span style=&#34;color:#a6e22e&#34;&gt;Point&lt;/span&gt;) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; texture_creator &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self.canvas.texture_creator();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; surface &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; font
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .render(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;text)
@@ -207,7 +404,7 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; TextureQuery { width, height, &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt; } &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; texture.query();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// If the text is too big for the screen, downscale it (and center regardless)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; padding &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; padding &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self.get_rect(width, height, position.x(), position.y());
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    self.canvas.copy(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;texture, None, Some(target))&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;;
@@ -216,21 +413,21 @@ I’m going back in.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What do you mean there&amp;rsquo;s no write function that just puts the text on the screen, are we in the stone ages ?&lt;/p&gt;
 &lt;p&gt;Anyways, I pass a reference to the &lt;strong&gt;Renderer&lt;/strong&gt; into &lt;strong&gt;State&lt;/strong&gt; like so.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug)]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#[derive(Debug)]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;State&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;a&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; renderer: Option&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;a&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; Renderer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In Retrospect, I feel like I could have handled that a bit better because conceptually, the renderer isn&amp;rsquo;t really attached to the state in any meaningful way, it just feels like baggage on the type. I guess at the time it was probably the easiest thing to do
 something else i could have done is maybe pass the renderer as an argument to a draw function in the struct, something like this&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; State{
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; State{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;draw&lt;/span&gt;(renderer: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mut&lt;/span&gt; Renderer)&lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;weirdly enough i have a really similar function already implemented in the struct called display so i wonder why that didn&amp;rsquo;t come to mind.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; State{
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;impl&lt;/span&gt; State{
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self) -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;//check to see if renderer is attached
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; rng &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rand::thread_rng();
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; rng &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rand::thread_rng();
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; self.renderer {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Some(renderer) &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                renderer.clear();
@@ -249,7 +446,7 @@ something else i could have done is maybe pass the renderer as an argument to a 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;updated-running-loop&#34;&gt;Updated Running Loop&lt;/h2&gt;
 &lt;p&gt;I updated the running loop to re-render the organisms on each iteration like so&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;pub&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() -&amp;gt; Result&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;(), String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;#39;running&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;loop&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;..&lt;/span&gt;.

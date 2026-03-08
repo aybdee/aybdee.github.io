@@ -3,12 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/writing/first_death/</loc>
-    <lastmod>2025-04-29T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
+    <lastmod>2026-03-08T12:23:12+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/distributed-systems/</loc>
+    <lastmod>2026-03-08T12:23:12+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/programming/lock_free_linked_list/</loc>
+    <lastmod>2026-03-08T12:23:12+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/programming/</loc>
+    <lastmod>2026-03-08T12:23:12+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-03-08T12:23:12+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/writing/first_death/</loc>
     <lastmod>2025-04-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/writing/</loc>
@@ -18,9 +30,6 @@
     <lastmod>2025-04-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/programming/evo_part_2/</loc>
-    <lastmod>2025-01-07T05:57:12+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/programming/</loc>
     <lastmod>2025-01-07T05:57:12+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/rust/</loc>
